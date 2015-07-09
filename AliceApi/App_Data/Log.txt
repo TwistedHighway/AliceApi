@@ -1,0 +1,22 @@
+12/27/2013 10:31:34: We're on the Index page for Activities
+12/27/2013 10:31:34: An error has occurred
+12/27/2013 10:31:34: ... and an Info log.
+12/27/2013 10:31:34: ... and a warning.
+12/27/2013 10:31:34: ... and an error.
+12/27/2013 10:31:34: ... and a fatal error.
+12/27/2013 10:31:40: We're on the Index page for Activities
+12/27/2013 10:31:40: An error has occurred
+12/27/2013 10:31:40: ... and an Info log.
+12/27/2013 10:31:40: ... and a warning.
+12/27/2013 10:31:40: ... and an error.
+12/27/2013 10:31:40: ... and a fatal error.
+12/27/2013 10:36:26: We're on the Index page for Activities
+12/27/2013 10:36:26: An error has occurred
+12/27/2013 10:36:26: ... and an Info log.
+12/27/2013 10:36:26: ... and a warning.
+12/27/2013 10:36:26: ... and an error.
+12/27/2013 10:36:26: ... and a fatal error.
+01/21/2014 09:53:31: ... and an Info log.
+01/21/2014 09:53:31: ... and a warning.
+01/21/2014 09:53:31: ... and an error.
+01/21/2014 09:53:31: ... and a fatal error.

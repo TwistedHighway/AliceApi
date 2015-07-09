@@ -1,0 +1,84 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@using Sde.WebApps.Mvc3Template;*@ 
+@*@using Sde.WebApps.Mvc3Template.ViewModels;*@
+@using AliceApi;
+@*@using System.Web.Optimization;
+@using Sde.Web.Mvc;*@
+@using AliceApi.ViewModels;
+@using AliceApi.Helpers;
+@using AliceApi.Services.Paging;
+
+
+
+
+@* skipping section headContent*@ @*@section sidebarContent{
+	@Html.Menu(SideMenu.Name, "h2", "Links")
+}*@
+
+
+
+
+@model LoggingIndexModel
+        
+<h4>Search</h4>
+<script type="text/javascript">
+    $(function () {
+        $('.datePicker').datepicker({
+            dateFormat: "mm-dd-yy"
+        });
+    });
+</script>
+
+
+    <div class="grid-options">
+        View : @Html.ActionLink("List", "Index", "Logging") | @Html.ActionLink("Chart", "Chart")
+        | <span style="color: #c0c0c0;">RSS</span>
+        @*| @Html.ActionLink("RSS", "RssFeed", new { LoggerProviderName = Model.LoggerProviderName, Period = Model.Period, LogLevel = Model.LogLevel }, new { target = "_blank" })*@
+        | @Html.ActionLink("Manage", "Manage", "Logging")
+        | <strong>Search</strong>
+    </div> 
+
+
+    <div class="grid-filter">        
+        <div class="inner">
+
+        <table>
+            <tr>
+                <td>Logger</td>
+                <td>@Html.DropDownList("LoggerProviderName", new SelectList(AliceApi.Helpers.FormsHelper.LogProviderNames, "Value", "Text")) </td>
+            </tr>
+            <tr>
+                <td>Level</td>
+                <td>@Html.DropDownList("LogLevel", new SelectList(AliceApi.Helpers.FormsHelper.LogLevels, "Value", "Text"))  </td>
+            </tr>
+            <tr>
+                <td>For</td>
+                <td>
+                    <input type="radio" id="dateOption1" name="dateoption" /> @Html.DropDownList("Period", new SelectList(AliceApi.Helpers.FormsHelper.CommonTimePeriods, "Value", "Text"))                    
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="radio" id="dateOption2" name="dateoption" /> 
+                    <input style="width: 85px;" class="datePicker" type="text" id="txtDateStart" name="txtDateStart" /> and <input style="width: 85px;" class="datePicker" type="text" id="txtDateEnd" name="txtDateEnd" />
+                </td>
+            </tr>
+            <tr>
+                <td>Search criteria</td>
+                <td>
+                    <textarea id="criteria" name="criteria" rows="3" cols="60"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: right;">
+                    <input id="btnGo" name="btnGo" type="submit" value="Search" class="button ltgrey" />                      
+                </td>
+            </tr>
+        </table>
+
+        </div>
+    </div>

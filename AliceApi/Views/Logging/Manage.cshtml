@@ -1,0 +1,135 @@
+﻿@{
+    //Layout = "~/Views/Shared/DontModify/HomeLayout.cshtml";
+}
+@*@using Sde.WebApps.Mvc3Template;*@ 
+@*@using Sde.WebApps.Mvc3Template.ViewModels;*@
+@using AliceApi;
+@using System.Web.Optimization;
+@using AliceApi.ViewModels;
+@using AliceApi.Helpers;
+@using AliceApi.Services.Paging;
+
+
+@model LoggingManageModel
+<script type="text/javascript">
+    $(function () {
+        $('.datePicker').datepicker({
+            dateFormat: "mm-dd-yy"
+        });
+    });
+</script>           
+       <h4>Manage</h4>
+
+<div id="errorMessage">@Session["Message"]</div>
+
+@using (Html.BeginForm("Manage", "Logging", new { CurrentPageIndex = 1 }, FormMethod.Post, new { id = "myform" }))
+{
+
+    <div class="grid-options">
+        View : @Html.ActionLink("List", "Index", "Logging") | @Html.ActionLink("Chart", "Chart")
+        | @Html.ActionLink("RSS", "RssFeed", new { LoggerProviderName = Model.LoggerProviderName, Period = Model.Period, LogLevel = Model.LogLevel }, new { target = "_blank" })
+        | <strong>Manage</strong>
+        | @Html.ActionLink("Search", "Search", "Logging")
+    </div> 
+			
+    <div class="grid-filter">
+        <div class="inner">
+            Logger : @Html.DropDownList("LoggerProviderName", new SelectList(FormsHelper.LogProviderNames, "Value", "Text"))
+            Level : @Html.DropDownList("LogLevel", new SelectList(FormsHelper.LogLevels, "Value", "Text"))
+            For : @Html.DropDownList("Period", new SelectList(AliceApi.Helpers.FormsHelper.CommonTimePeriods, "Value", "Text"))
+            
+@*            <input style="width: 85px;height: 13px; padding-top: 2px;" class="datePicker" type="text" id="txtDateStart" name="txtDateStart" /> 
+            and <input style="width: 85px; height: 13px;padding-top: 2px;" class="datePicker" type="text" id="txtDateEnd" name="txtDateEnd" /> &nbsp;*@
+            <input id="btnFilter" name="btnFilter" type="submit" value="Apply Filter" class="button-sm ltgrey" />
+        </div>
+    </div>
+			
+    <div class="grid-header">
+        <div class="grid-results">
+            <div class="inner">
+                <span style="float: left">
+                    @string.Format("{0} records found. Page {1} of {2}", Model.LogEvents.TotalItemCount, Model.LogEvents.PageNumber, Model.LogEvents.PageCount)
+                </span><span style="float: right">Show @Html.DropDownList("PageSize", new SelectList(FormsHelper.PagingPageSizes, "Value", "Text"), new { onchange = "document.getElementById('myform').submit()" })
+                    results per page </span>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+        <div class="paging">
+            <div class="pager">                
+                @Html.Raw(Html.Pager(ViewData.Model.LogEvents.PageSize, ViewData.Model.LogEvents.PageNumber, ViewData.Model.LogEvents.TotalItemCount, new { LoggerProviderName = ViewData["LoggerProviderName"], LogLevel = ViewData["LogLevel"], Period = ViewData["Period"], PageSize = ViewData["PageSize"] }))
+            </div>
+            <input id="btnDelete" name="btnDelete" type="submit" value="Delete This Set" class="button-sm ltgrey" style="float: right; margin-top: -25px; margin-right: 170px;" /><input id="btnClear" name="btnClearAllLogs" type="submit" value="SCORTCH THE EARTH" class="button-sm scortch" style="float: right; margin-top: -25px;" OnClick="return confirm('ARE YOU SURE YOU WANT TO DO THIS?\nDELETES EVERYTHING (logs) FROM EVERYWHERE!');" />
+        </div>
+    </div>   
+			
+}
+@if (Model.LogEvents.Count() == 0)
+{ 
+    @:<p>No results found</p>
+}
+else
+{  	   
+    <div class="grid-container" style="width: 100%; border: 1px solid #000;">
+        <table class="grid" >
+            <tr>
+                <th>Details</th>
+                @*<th>#</th>*@
+                <th>
+                    Log Info
+                </th>
+                <th>
+                   Error Message 
+                </th>
+              @*  <th style='white-space: nowrap;'>More...</th>*@
+                @*<th>Message</th>
+                <th>Host</th>
+                <th>Source</th>
+                <th>Type</th>
+                <th>Level</th>*@
+            </tr>
+            @{int i = 0;}
+            @foreach (var item in Model.LogEvents)
+            { 	   
+                <tr class="@(i++ % 2 == 1 ? "alt" : "")">
+                    <td>
+                        <div style="">
+                            @Html.ActionLink("Details", "Details", new { id = item.Id.ToString(), loggerProviderName = item.LoggerProviderName }, new { @class = "details-icon", @title = "Details", @alt = "Details" })
+                            @Html.ActionLink("Details", "Details", new { id = item.Id.ToString(), loggerProviderName = item.LoggerProviderName })
+                        </div>
+                    </td>
+                    <td>
+                        <div style="width: 280px">
+                            <strong>Log:</strong> @item.LoggerProviderName <br />
+                            <strong>Log Level:</strong> @item.Level.ToLower().ToPascalCase() <br />
+                            <strong>Date:</strong> @String.Format("{0:g}", item.LogDate.ToLocalTime()) (@item.LogDate.ToLocalTime().TimeAgoString())<br />
+                            <strong>Host:</strong>  @item.MachineName <br />
+                            <strong>Source:</strong> @item.Source.Chop(30) <br />
+                            <strong>Type:</strong> @item.Type <br />
+                       </div>
+                    </td>
+                    <td>
+                        <div style="width: 402px">
+                            <pre>@item.Message.WordWrap(50)</pre>
+                        </div>
+                    </td>
+                  @*<td style='white-space: nowrap;'></td>*@
+                  @*<td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>*@
+                </tr>
+	   
+            }
+        </table>
+    </div>
+	
+		
+}
+<div class="grid-header">
+    <div class="paging">
+        <div class="pager">
+            @Html.Raw(Html.Pager(ViewData.Model.LogEvents.PageSize, ViewData.Model.LogEvents.PageNumber, ViewData.Model.LogEvents.TotalItemCount, new { LogType = ViewData["LogType"], Period = ViewData["Period"], PageSize = ViewData["PageSize"] }))
+        </div>
+    </div>
+</div>

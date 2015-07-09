@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@using Sde.WebApps.Mvc3Template;*@ 
+@*@using Sde.WebApps.Mvc3Template.ViewModels;*@
+@using AliceApi;
+@using System.Web.Optimization;
+@using AliceApi.ViewModels;
+@using AliceApi.Helpers;
+@using AliceApi.Services.Paging;
+
+
+@model AliceApi.Models.LogEvent
+           
+ <h4>Details</h4>
+
+    <p>        
+        @Html.ActionLink("Back to List", "Index") 
+    </p>
+
+    <fieldset>
+        <legend>Fields</legend>
+        
+        <div class="display-label">Id</div>
+        <div class="display-field">@Model.Id</div>
+        
+        <div class="display-label">LogDate</div>
+        <div class="display-field">@String.Format("{0:g}", Model.LogDate)</div>
+        
+        <div class="display-label">Name</div>
+        <div class="display-field">@Model.LoggerProviderName</div>
+        
+        <div class="display-label">Source</div>
+        <div class="display-field">@Model.Source</div>
+        
+        <div class="display-label">MachineName</div>
+        <div class="display-field">@Model.MachineName</div>
+        
+        <div class="display-label">Type</div>
+        <div class="display-field">@Model.Type</div>
+        
+        <div class="display-label">Level</div>
+        <div class="display-field">@Model.Level</div>
+        
+        <div class="display-label">Message</div>
+        <div class="display-field">
+            <pre>@Model.Message.WordWrap(80) </pre>
+        </div>
+        
+        <div class="display-label">StackTrace</div>
+        <div class="display-field">@Model.StackTrace </div>                      
+        
+    </fieldset>
+
+    @Html.Raw(FormsHelper.OutputXmlTableForLogging(Model.AllXml).ToString())
+
+    <p>        
+        @Html.ActionLink("Back to List", "Index") 
+    </p>
