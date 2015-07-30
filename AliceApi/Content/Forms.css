@@ -1,32 +1,33 @@
 ﻿
 /* forms */
 fieldset {
-    /*order: none;
+    /*order: none;*/
     margin: 0;
-    padding: 0;*/
+    padding: 0;
 }
 
     fieldset legend {
-        /*display: none;*/
+        font-weight: bold;
+        padding: 0 5px;
+        letter-spacing: 1px;
     }
 
     fieldset ol {
         /*padding: 0;
         list-style: none;*/
     }
-
         fieldset ol li {
             /*padding-bottom: 5px;*/
         }
 
 label {
     /*display: block;
-    font-size: 1.2em;
-    font-weight: 600;*/
+    font-size: 1.2em;*/
+    font-weight: 600;
 }
 
 label.checkbox {
-    /*display: inline;*/
+    display: inline;
 }
 
 input, textarea {

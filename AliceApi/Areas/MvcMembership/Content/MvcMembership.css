@@ -40,9 +40,12 @@ dl.mvcMembership > dd{
 div.mvcMembership-account > form{
 	display: inline;
 }
-
+div.mvcMembership-allUsers .mvcMembership-username {
+    font-weight: bold;
+    font-size: 1.1em;
+}
 div.mvcMembership-allUsers ul{
-	margin: 0;
+	/*margin: 0;*/
 }
 div.mvcMembership-allUsers ul.mvcMembership-users > li{
 	margin: .5em 0 .5em 0;
@@ -74,11 +77,19 @@ div.mvcMembership-allUsers .PagedList-disabled a:hover{
 	color: #666;
 }
 
+div.mvcMembership-allRoles ul{
+	/*margin: 0;*/
+}
+
 div.mvcMembership-allRoles ul > li{
 	margin: .5em 0 .5em 0;
 }
 
 form.mvcMembership-searchForm fieldset,
 .mvcMembership-allRoles fieldset{
-	padding-top: 1.5em;
+	/*padding-top: 1.5em;*/
+}
+
+ul.mvcMembership-tabs li {
+    display: inline-block;
 }

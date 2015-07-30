@@ -52,20 +52,38 @@ footer {
 #footerNav{ color: #fff;margin: 80px 0 0 10px;}
 #footerNav a{ color: #fff;text-decoration: none;}
 .push {
-	height: 100px; /* .push must be the same height as .footer */
+	height: 100px; /* .push must be the same height as .footer  Sticky Footer concept */
 }
 
 /* HTML */
 /***********************************************/
-a {
-    color: #333;
+ a:link, a {
+    color: #0000FF;
     outline: none;
     text-decoration: underline;
 }
-    a:link, a:visited,
-    a:active, a:hover { color: #333; }
-    a:hover { color: #f30; }
+    a:visited {color: #800080;}
+    a:active, a:hover { color: #f30; }
 
+h1, h2, h3,h4, h5, h6 {    color: #000;    margin-bottom: 0;    padding-bottom: 0;}
+h1 { font-size: 1.6em;}
+h2 { font-size: 1.4em;}
+h3 {font-size: 1.2em;}
+h4 {font-size: 1em;}
+h5 { font-size: .9em;}
+h6 { font-size: .8em;}
+    h5 a:link, h5 a:visited, h5 a:active {        
+        padding: 0;        
+        text-decoration: none;
+    }
+
+ol, ul {
+
+    display: block;
+    margin-left: 24px;
+}
+
+p{ font-size: 1em;}
 
 /* HTML 5 */
 /***********************************************/
@@ -93,6 +111,10 @@ article {
 aside {
     float: right;
     width: 25%;
+    border: 1px solid #999;
+    background-color: #ccc;
+    padding: 5px;
+    margin-left: 12px; 
 }
 
     aside ul {
@@ -101,9 +123,21 @@ aside {
     }
 
         aside ul li {
-            background: url("../Images/bullet.png") no-repeat 0 50%;
+            /*background: url("../Images/bullet.png") no-repeat 0 50%;*/
             padding: 2px 0 2px 20px;
         }
+
+section {
+    
+}
+
+section.box2col {
+    
+}
+section.box2col.left {
+    
+}
+section.box2col.right{}
 
 /* GRAMATICAL GENERICS */
 /***********************************************/
@@ -111,14 +145,8 @@ aside {
 .float-right { float: right; }
 .clear-fix:after { content: "."; clear: both; display: block; height: 0; visibility: hidden; }
 
-/*h1, h2, h3,h4, h5, h6 {    color: #000;    margin-bottom: 0;    padding-bottom: 0;}*/
-/*h1 {    font-size: 2em;}
-h2 {    font-size: 1.75em;}
-h3 {    font-size: 1.2em;}
-h4 {    font-size: 1.1em;}
-h5, h6 {    font-size: 1em;}
-    h5 a:link, h5 a:visited, h5 a:active {        padding: 0;        text-decoration: none;
-    }*/
+
+
 
 
 
@@ -233,9 +261,12 @@ ul#menu {
 .title {
     margin-bottom: 10px;
 }
-
+.title h1 {
+    color: #333333;
+}
 .title h1, .title h2 {
-    display: inline;
+    /*display: inline;*/
+    letter-spacing: 1px;
 }
 
 .title h2 {
