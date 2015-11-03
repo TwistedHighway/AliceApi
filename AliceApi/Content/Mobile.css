@@ -88,7 +88,7 @@
     }
 
     /* ordered list */
-    /*ol.round {
+    ol.round {
         list-style-type: none;
         padding-left: 0;
     }
@@ -109,7 +109,7 @@
             ol.round li.eight,
             ol.round li.nine {
                 background: none;
-            }*/
+            }
 
      /* features */
      section.feature {

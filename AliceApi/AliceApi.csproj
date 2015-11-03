@@ -418,10 +418,9 @@
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Areas\MvcMembership\Content\PagedList.css" />
     <Content Include="Areas\MvcMembership\ReadMe.txt" />
     <Content Include="Content\eLogger.css" />
-    <Content Include="Areas\MvcMembership\Content\MvcMembership.css" />
+    <Content Include="Areas\MvcMembership\MvcMembership.css" />
     <Content Include="Content\Errors.css" />
     <Content Include="Content\icons\icon_edit.gif" />
     <Content Include="Content\icons\icon_newrecord.gif" />
