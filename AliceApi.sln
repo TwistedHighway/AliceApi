@@ -3,21 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliceApi", "AliceApi\AliceApi.csproj", "{BA798931-1D88-4D52-A5F9-F5508182A1AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{45DD0742-8AA1-42B4-8A09-4606647F38ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliceApi.Common", "AliceApi.Common\AliceApi.Common.csproj", "{45DD0742-8AA1-42B4-8A09-4606647F38ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliceApi.Repository", "AliceApi.Repository\AliceApi.Repository.csproj", "{B9ED33FD-0F16-4D98-89B9-E2AD2B8FFB3E}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AliceApi.Database", "AliceApi.Database\AliceApi.Database.sqlproj", "{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://dionysus:8080/tfs/ridgeline
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = AliceApi\\AliceApi.csproj
-		SccProjectName1 = AliceApi
-		SccLocalPath1 = AliceApi
-		SccProjectUniqueName2 = Common\\Common.csproj
-		SccProjectName2 = Common
-		SccLocalPath2 = Common
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -31,6 +23,16 @@ Global
 		{45DD0742-8AA1-42B4-8A09-4606647F38ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45DD0742-8AA1-42B4-8A09-4606647F38ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45DD0742-8AA1-42B4-8A09-4606647F38ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9ED33FD-0F16-4D98-89B9-E2AD2B8FFB3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9ED33FD-0F16-4D98-89B9-E2AD2B8FFB3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9ED33FD-0F16-4D98-89B9-E2AD2B8FFB3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9ED33FD-0F16-4D98-89B9-E2AD2B8FFB3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

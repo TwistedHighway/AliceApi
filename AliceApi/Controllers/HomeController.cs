@@ -26,10 +26,10 @@ namespace AliceApi.Controllers
 
             //NLogLogger logger = new NLogLogger();
             //logger.Info("We're on the Index page for Activities");
-
+            Logic.BaseDataClass.CreateMovie();
             try
             {
-                throw new Exception("A test exception");
+                //throw new Exception("A test exception");
             }
             catch (Exception ex)
             {

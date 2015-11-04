@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="618eb4e7d1d94bf5a26ecf7469b24182" Name="Diagram1" ShowGrid="true">
+        <EntityTypeShape EntityType="LoggingDataModel.aspnet_WebEvent_ErrorCodes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoggingDataModel.aspnet_WebEvent_Events" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoggingDataModel.ELMAH_Error" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoggingDataModel.Log4Net_Error" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoggingDataModel.NLog_Error" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoggingDataModel.vw_aspnet_WebEvents_extended" Width="1.5" PointX="5.5320141192209036" PointY="8.3255186715747787" />
+        <EntityTypeShape EntityType="LoggingDataModel.AuditLog" Width="1.5" PointX="4.9338019587722624" PointY="7.9893067963371553" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
