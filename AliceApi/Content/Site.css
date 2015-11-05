@@ -93,6 +93,7 @@ article {
 aside {
     float: right;
     width: 25%;
+    border: 1px solid #c8c8c8;
 }
 
     aside ul {

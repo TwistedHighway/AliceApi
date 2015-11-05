@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace AliceApi.ViewModels
 {
+        [MetadataType(typeof(Movie_Validation))]
     public class MovieViewModel 
     {
 
@@ -63,7 +65,20 @@ namespace AliceApi.ViewModels
             get{ return string.Empty;}
         }
 
+        public class Movie_Validation
+        {
+            [Required(ErrorMessage = "Title is required")]
+            public string MovieTitle { get; set; }
 
+            //[Required(ErrorMessage = "Address is Required")]
+            //public string Address1 { get; set; }
+
+            [DataType(DataType.Date)]// seems redundant but it describes a DataType of Date 
+            [DisplayFormat(DataFormatString = "{0:d}")]
+            //[Required(ErrorMessage = " is Required")]// adding this invalidates the update/insert
+            public DateTime DateUpdated { get; set; }
+
+        }
 
 
     }

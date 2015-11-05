@@ -25,7 +25,9 @@ namespace AliceApi
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BundleConfig.RegisterBundles(BundleTable.Bundles); AuthConfig.RegisterAuth();
+
+            //AuthConfig.RegisterAuth();
 
             // http://dotnetdarren.wordpress.com/2010/07/27/logging-on-mvc-part-1/
             // ELMAH - Global Error Handler 

@@ -15,6 +15,9 @@
                 <p class="site-title"><a href="~/">Alice ~ Api</a></p>
             </div>
             <div class="float-right">
+                 <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
                 <nav>
                     <ul id="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
@@ -22,15 +25,17 @@
                         <li>@Html.ActionLink("Logging", "Index", "Logging", new { area = "" }, null)</li>
                         <li>@Html.ActionLink("Products", "Index", "Products", new { area = "" }, null)</li>
                         <li>@Html.ActionLink("MvcMembership", "Index", "UserAdministration", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Movies", "Index", "Movie", new { area = "" }, null)</li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
         
-        <div class="content-wrapper clear-fix">
-            @RenderBody()
-        </div>
+            <div class="content-wrapper clear-fix">
+                @RenderSection("featured", required: false)
+                @RenderBody()
+            </div>
 
         @* NEEDED FOR STICKY FOOTER*@
         <div class="push"></div>
