@@ -66,6 +66,8 @@ a {
     a:active, a:hover { color: #333; }
     a:hover { color: #f30; }
 
+    ul,ol{ margin-left: 24px;}
+    
 
 /* HTML 5 */
 /***********************************************/
@@ -158,6 +160,7 @@ h5, h6 {    font-size: 1em;}
         margin-left: 10px;
         margin-right: 3px;
         padding: 2px 3px;*/
+        color: #fff;
         text-decoration: none;
     }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Data;
+using System.Configuration;
 using System.Linq;
 using System.Transactions;
 using System.Web;
@@ -12,9 +12,15 @@ using WebMatrix.WebData;
 using Microsoft.AspNet;
 using AliceApi.Filters;
 using AliceApi.ViewModels;
+using DotNetOpenAuth.OAuth2;
+using DotNetOpenAuth.GoogleOAuth2;
 
 namespace AliceApi.Controllers
 {
+
+    //https://github.com/DotNetOpenAuth/DotNetOpenAuth/wiki/Security-scenarios
+
+
     [Authorize]
     [InitializeSimpleMembership]
     public partial class AccountController : Controller
@@ -37,7 +43,17 @@ namespace AliceApi.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult Login(LoginModel model, string returnUrl)
         {
-           
+            var gclientId = ConfigurationManager.AppSettings["client_id"];
+            var gclientSecret = ConfigurationManager.AppSettings["client_secret"];
+
+            //DotNetOpenAuth.GoogleOAuth2.GoogleOAuth2Client client = new GoogleOAuth2Client(gclientId, gclientSecret);
+            //client.RequestAuthentication(this.HttpContext, "");
+            //var foo = client.VerifyAuthentication(this.HttpContext).IsSuccessful;
+
+
+
+
+
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
@@ -47,28 +63,7 @@ namespace AliceApi.Controllers
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
 
-            //if (ModelState.IsValid)
-            //{
-            //    if (Membership.ValidateUser(model.UserName, model.Password))
-            //    {
-            //        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-            //        if (Url.IsLocalUrl(returnUrl))
-            //        {
-            //            return Redirect(returnUrl);
-            //        }
-            //        else
-            //        {
-            //            return RedirectToAction("Index", "Home");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            //    }
-            //}
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+    
         }
 
         //
@@ -380,13 +375,15 @@ namespace AliceApi.Controllers
             {
                 Provider = provider;
                 ReturnUrl = returnUrl;
-            }
+            } 
 
             public string Provider { get; private set; }
             public string ReturnUrl { get; private set; }
 
             public override void ExecuteResult(ControllerContext context)
             {
+               // OAuthWebSecurity.RegisterGoogleClient();
+               // ReturnUrl = "http://127.0.0.1/AliceApi/";
                 OAuthWebSecurity.RequestAuthentication(Provider, ReturnUrl);
             }
         }
@@ -429,5 +426,9 @@ namespace AliceApi.Controllers
             }
         }
         #endregion
+
+
+
+       
     }
 }

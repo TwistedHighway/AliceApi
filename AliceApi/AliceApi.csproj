@@ -585,6 +585,8 @@
     <Content Include="Helpers\FormsHelper.cs.0" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="_resources\FacebookApiCode.txt" />
+    <Content Include="_resources\ReaadMe.txt" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
