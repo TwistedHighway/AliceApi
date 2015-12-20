@@ -6,6 +6,7 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
     <body>
         <div id="site-wrapper">
@@ -42,9 +43,10 @@
     </div>
     @*NEEDS TO BE OUTSIDE site-wrapper*@
     <footer>
-        <div class="float-left">&copy;2014</div>      
+        <div class="float-left">&copy;@Html.Raw(DateTime.Now.Year)</div>      
     </footer>
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>

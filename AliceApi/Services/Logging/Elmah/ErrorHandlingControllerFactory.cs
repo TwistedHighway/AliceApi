@@ -12,17 +12,13 @@ using System.Web.Routing; // - RequestContext
         RequestContext requestContext,
         string controllerName)
         {
-            var controller =
-            base.CreateController(requestContext,
-            controllerName);
+            var controller = base.CreateController( requestContext, controllerName );
 
             var c = controller as Controller;
 
             if (c != null)
             {
-                c.ActionInvoker =
-                new ErrorHandlingActionInvoker(
-                new HandleErrorWithELMAHAttribute());
+                c.ActionInvoker = new ErrorHandlingActionInvoker( new HandleErrorWithELMAHAttribute() );
             }
 
             return controller;

@@ -17,25 +17,29 @@ namespace AliceApi
 
     public class WebApiApplication : System.Web.HttpApplication
     {
-
-          protected void Application_Start()
+        protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles); AuthConfig.RegisterAuth();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            //AuthConfig.RegisterAuth();
             //AuthConfig.RegisterAuth();
 
             // http://dotnetdarren.wordpress.com/2010/07/27/logging-on-mvc-part-1/
             // ELMAH - Global Error Handler 
-            ControllerBuilder.Current.SetControllerFactory(new ErrorHandlingControllerFactory());
+            //ControllerBuilder.Current.SetControllerFactory(new ErrorHandlingControllerFactory());
+            GlobalFilters.Filters.Add(new HandleErrorWithELMAHAttribute());
+
+
             // Register custom NLog Layout renderers
             //LayoutRendererFactory.AddLayoutRenderer("utc_date", typeof(Area51.Services.Logging.NLog.UtcDateRenderer));
             //LayoutRendererFactory.AddLayoutRenderer("web_variables", typeof(Area51.Services.Logging.NLog.WebVariablesRenderer));
-            
+
             //For later versions of NLog (including v4.0.30319):
             ConfigurationItemFactory.Default.LayoutRenderers.RegisterDefinition("utc_date", typeof(AliceApi.Services.Logging.NLog.UtcDateRenderer));
             ConfigurationItemFactory.Default.LayoutRenderers.RegisterDefinition("web_variables", typeof(AliceApi.Services.Logging.NLog.WebVariablesRenderer));
