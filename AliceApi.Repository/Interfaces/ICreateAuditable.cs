@@ -10,5 +10,6 @@ namespace AliceApi.Repository.Interfaces
     {
         System.DateTime DateCreated { get; set; }
         System.Guid CreatedBy { get; set; }
+        DateTime CreateDate { get; set; }
     }
 }

@@ -4,17 +4,37 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BaseDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="BaseDataModelStoreContainer">
-          <EntitySet Name="Movies" EntityType="BaseDataModel.Store.Movies" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserPreferences" EntityType="BaseDataModel.Store.UserPreferences" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
+    <Schema Namespace="BaseDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MovieGenre">
+          <Key>
+            <PropertyRef Name="GenreId" />
+          </Key>
+          <Property Name="GenreId" Type="int" Nullable="false" />
+          <Property Name="GenreName" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MovieMPAA">
+          <Key>
+            <PropertyRef Name="MPAAID" />
+          </Key>
+          <Property Name="MPAAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MPAAName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Movies">
           <Key>
             <PropertyRef Name="MovieId" />
           </Key>
-          <Property Name="MovieId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="MovieTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="MovieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Genre" Type="int" />
+          <Property Name="MovieTitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="ReleaseDate" Type="datetime" />
+          <Property Name="DirectedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="MPAAID" Type="int" Nullable="false" />
+          <Property Name="LocalRating" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserPreferences">
           <Key>
@@ -24,13 +44,41 @@
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PerfValue" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_Movies_MovieMPRG">
+          <End Role="MovieMPAA" Type="Self.MovieMPAA" Multiplicity="1" />
+          <End Role="Movies" Type="Self.Movies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MovieMPAA">
+              <PropertyRef Name="MPAAID" />
+            </Principal>
+            <Dependent Role="Movies">
+              <PropertyRef Name="MPAAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BaseDataModelStoreContainer">
+          <EntitySet Name="MovieGenre" EntityType="Self.MovieGenre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MovieMPAA" EntityType="Self.MovieMPAA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPreferences" EntityType="Self.UserPreferences" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Movies_MovieMPRG" Association="Self.FK_Movies_MovieMPRG">
+            <End Role="MovieMPAA" EntitySet="MovieMPAA" />
+            <End Role="Movies" EntitySet="Movies" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BaseDataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BaseEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="UserPreferences" EntityType="BaseDataModel.UserPreference" />
-          <EntitySet Name="Movies" EntityType="BaseDataModel.Movie" />
+          <EntitySet Name="MovieGenres" EntityType="BaseDataModel.MovieGenre" />
+          <EntitySet Name="MovieMPAAs" EntityType="BaseDataModel.MovieMPAA" />
+          <EntitySet Name="Movies1" EntityType="BaseDataModel.Movie" />
+          <AssociationSet Name="FK_Movies_MovieMPRG" Association="BaseDataModel.FK_Movies_MovieMPRG">
+            <End Role="MovieMPAA" EntitySet="MovieMPAAs" />
+            <End Role="Movy" EntitySet="Movies1" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserPreference">
           <Key>
@@ -40,13 +88,51 @@
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="PerfValue" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
         </EntityType>
+        <EntityType Name="MovieGenre">
+          <Key>
+            <PropertyRef Name="GenreId" />
+          </Key>
+          <Property Name="GenreId" Type="Int32" Nullable="false" />
+          <Property Name="GenreName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MovieMPAA">
+          <Key>
+            <PropertyRef Name="MPAAID" />
+          </Key>
+          <Property Name="MPAAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MPAAName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Movies" Relationship="BaseDataModel.FK_Movies_MovieMPRG" FromRole="MovieMPAA" ToRole="Movy" />
+        </EntityType>
         <EntityType Name="Movie">
           <Key>
             <PropertyRef Name="MovieId" />
           </Key>
-          <Property Type="Int32" Name="MovieId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="MovieTitle" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MovieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Genre" Type="Int32" />
+          <Property Name="MovieTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ReleaseDate" Type="DateTime" Precision="3" />
+          <Property Name="DirectedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MPAAID" Type="Int32" Nullable="false" />
+          <Property Name="LocalRating" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MovieMPAA" Relationship="BaseDataModel.FK_Movies_MovieMPRG" FromRole="Movy" ToRole="MovieMPAA" />
         </EntityType>
+        <Association Name="FK_Movies_MovieMPRG">
+          <End Type="BaseDataModel.MovieMPAA" Role="MovieMPAA" Multiplicity="1" />
+          <End Type="BaseDataModel.Movie" Role="Movy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MovieMPAA">
+              <PropertyRef Name="MPAAID" />
+            </Principal>
+            <Dependent Role="Movy">
+              <PropertyRef Name="MPAAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -62,10 +148,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Movies">
+          <EntitySetMapping Name="MovieGenres">
+            <EntityTypeMapping TypeName="BaseDataModel.MovieGenre">
+              <MappingFragment StoreEntitySet="MovieGenre">
+                <ScalarProperty Name="GenreName" ColumnName="GenreName" />
+                <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovieMPAAs">
+            <EntityTypeMapping TypeName="BaseDataModel.MovieMPAA">
+              <MappingFragment StoreEntitySet="MovieMPAA">
+                <ScalarProperty Name="MPAAName" ColumnName="MPAAName" />
+                <ScalarProperty Name="MPAAID" ColumnName="MPAAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies1">
             <EntityTypeMapping TypeName="BaseDataModel.Movie">
               <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LocalRating" ColumnName="LocalRating" />
+                <ScalarProperty Name="MPAAID" ColumnName="MPAAID" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="DirectedBy" ColumnName="DirectedBy" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
                 <ScalarProperty Name="MovieTitle" ColumnName="MovieTitle" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
                 <ScalarProperty Name="MovieId" ColumnName="MovieId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -87,6 +199,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

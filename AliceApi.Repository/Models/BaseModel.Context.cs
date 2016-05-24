@@ -26,6 +26,8 @@ namespace AliceApi.Repository.Models
         }
     
         public DbSet<UserPreference> UserPreferences { get; set; }
-        public DbSet<Movie> Movies { get; set; }
+        public DbSet<MovieGenre> MovieGenres { get; set; }
+        public DbSet<MovieMPAA> MovieMPAAs { get; set; }
+        public DbSet<Movie> Movies1 { get; set; }
     }
 }

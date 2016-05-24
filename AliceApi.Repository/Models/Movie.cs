@@ -15,6 +15,18 @@ namespace AliceApi.Repository.Models
     public partial class Movie
     {
         public int MovieId { get; set; }
+        public Nullable<int> Genre { get; set; }
         public string MovieTitle { get; set; }
+        public Nullable<System.DateTime> ReleaseDate { get; set; }
+        public string DirectedBy { get; set; }
+        public string Summary { get; set; }
+        public int MPAAID { get; set; }
+        public Nullable<int> LocalRating { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> DateUpdated { get; set; }
+        public string UpdatedBy { get; set; }
+    
+        public virtual MovieMPAA MovieMPAA { get; set; }
     }
 }

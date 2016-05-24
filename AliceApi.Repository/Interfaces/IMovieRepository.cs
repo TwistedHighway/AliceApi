@@ -9,4 +9,12 @@ namespace AliceApi.Repository.Interfaces
     public interface IMovieRepository : IDisposable
     {
     }
+
+    public interface IMovieMpaaRepository : IDisposable
+    {
+    }
+
+    public interface IMovieGenreRepository : IDisposable
+    {
+    }
 }

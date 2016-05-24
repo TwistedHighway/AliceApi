@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AliceApi.Repository.Models;
 using AliceApi.Repository.Repositories;
+using AliceApi.Repository.Repositories.Movies;
 
 namespace AliceApi.Repository
 {
@@ -21,6 +22,9 @@ namespace AliceApi.Repository
         private LoggedInUserContext _loggedInUserContext;
 
         private MovieRepository _movieRepository;
+        private MovieGenreRepository _movieGenreRepository;
+        private MovieMpaaRepository _movieMpaaRepository;
+
         //private ProjectStatusChangeRepository _projectStatusChangeRepository;
         //private ActivityLogRepository _activityLogRepository;
         //private SampleLogRepository _sampleLogRepository;
@@ -77,11 +81,23 @@ namespace AliceApi.Repository
             get { return _baseEntities; }
         }
 
+
+
         public MovieRepository MovieRepository
         {
             get { return _movieRepository ?? (_movieRepository = new MovieRepository(_baseEntities, UserContext)); }
         }
 
+        public MovieGenreRepository MovieGenreRepository
+        {
+            get { return _movieGenreRepository ?? (_movieGenreRepository = new MovieGenreRepository(_baseEntities, UserContext)); }
+        }
+
+        
+            public MovieMpaaRepository MovieMpaaRepository
+        {
+            get { return _movieMpaaRepository ?? (_movieMpaaRepository = new MovieMpaaRepository(_baseEntities, UserContext)); }
+        }
         //public ProjectStatusChangeRepository ProjectStatusChangeRepository
         //{
         //    get { return _projectStatusChangeRepository ?? (_projectStatusChangeRepository = new ProjectStatusChangeRepository(_salesApp1Entities, UserContext)); }
