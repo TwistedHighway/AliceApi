@@ -3,20 +3,18 @@
 	ViewBag.Title = "Role: " + Model.Role;
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h3>Role Manager</h3>
+<h4>Selected Role: @Model.Role</h4>
 
-<link href='@Url.Content("~/Content/MvcMembership.css")' rel="stylesheet" type="text/css" />
-
-<h2 class="mvcMembership">Role: @Model.Role</h2>
-<div class="mvcMembership-roleUsers">
-	@if(Model.Users.Count() > 0){
-		<ul class="mvcMembership">
-			@foreach(var key in Model.Users.Keys){ var user = Model.Users[key];
+	@if(Model.Users.Any()){
+		<ul>
+			@foreach(var user in Model.Users){ //var user = Model.Users[key];
 			<li>
 				@if(user == null){
-					<span>@key <em>(Deleted)</em></span>
+					<span>@user.UserName <em>(Deleted)</em></span>
 				}else{
-					@Html.ActionLink(user.UserName, "Details", new{id=user.ProviderUserKey})
-					using(Html.BeginForm("RemoveFromRole", "UserAdministration", new{id = user.ProviderUserKey, role = Model.Role})){
+					@Html.ActionLink(user.UserName, "Details", new{id=user.Id})
+					using(Html.BeginForm("RemoveFromRole", "UserAdministration", new{id = user.Id, role = Model.Role})){
 						<input type="submit" value="Remove From" />
 					}
 				}
@@ -26,4 +24,4 @@
 	}else{
 	<p>No users are in this role.</p>
 	}
-</div>
+

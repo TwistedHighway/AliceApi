@@ -7,6 +7,8 @@ using System.Web.Security;
 using MvcMembership;
 using MvcMembership.Settings;
 using AliceApi.Areas.MvcMembership.Models.UserAdministration;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AliceApi.Areas.MvcMembership.Controllers
 {
@@ -22,17 +24,21 @@ namespace AliceApi.Areas.MvcMembership.Controllers
 		private readonly IUserService _userService;
 		private readonly IPasswordService _passwordService;
 
-		public UserAdministrationController()
-			: this(new AspNetMembershipProviderWrapper(), new AspNetRoleProviderWrapper(), new SmtpClientProxy())
-		{
-		}
+        public UserAdministrationController()
+        {
+        }
 
-		public UserAdministrationController(AspNetMembershipProviderWrapper membership, IRolesService roles, ISmtpClient smtp)
-			: this(membership.Settings, membership, membership, roles, smtp)
-		{
-		}
+        //public UserAdministrationController()
+        //	: this(new AspNetMembershipProviderWrapper(), new AspNetRoleProviderWrapper(), new SmtpClientProxy())
+        //{
+        //}
 
-		public UserAdministrationController(
+        //public UserAdministrationController(AspNetMembershipProviderWrapper membership, IRolesService roles, ISmtpClient smtp)
+        //	: this(membership.Settings, membership, membership, roles, smtp)
+        //{
+        //}
+
+        public UserAdministrationController(
 			IMembershipSettings membershipSettings,
 			IUserService userService,
 			IPasswordService passwordService,
@@ -46,82 +52,116 @@ namespace AliceApi.Areas.MvcMembership.Controllers
 			_smtpClient = smtpClient;
 		}
 
-		public ActionResult Index(int? page, string search)
+		public ActionResult Index(int? page, string search = "")
 		{
-			var users = string.IsNullOrWhiteSpace(search)
-				? _userService.FindAll(page ?? 1, PageSize)
+
+            var userService = new AspNetMembershipProviderWrapper();
+
+            //var roll = new IdentityRole { Name = "Admin" };
+            //if (!_userService.RoleManager.RoleExists(roll.Name))
+            //    _userService.RoleManager.Create(roll);
+
+            //roll = _userService.RoleManager.FindByName("Admin");
+            //var iRole = new IdentityUserRole()
+            //{
+            //    RoleId = roll.Id,
+            //    UserId = userId
+            //};
+
+            //if (!await UserManager.IsInRoleAsync(userId, roll.Name))
+            //{
+            //    user.Roles.Add(iRole);
+            //    RoleManager.Update(roll);
+            //}
+
+            var users = string.IsNullOrWhiteSpace(search)
+				? userService.FindAll(page ?? 1, PageSize)
 				: search.Contains("@")
-					? _userService.FindByEmail(search, page ?? 1, PageSize)
-					: _userService.FindByUserName(search, page ?? 1, PageSize);
+					? userService.FindByEmail(search, page ?? 1, PageSize)
+					: userService.FindByUserName(search, page ?? 1, PageSize);
 
 			if (!string.IsNullOrWhiteSpace(search) && users.Count == 1)
-				return RedirectToAction("Details", new {id = users[0].ProviderUserKey.ToString()});
+				return RedirectToAction("Details", new {id = users[0].Id.ToString()});
 
             return View(new IndexViewModel
                             {
                                 Search = search,
                                 Users = users,
-                                Roles = _rolesService.Enabled
-                                    ? _rolesService.FindAll()
-                                    : Enumerable.Empty<string>(),
-                                IsRolesEnabled = _rolesService.Enabled
-                            });
+                                Roles = userService.RoleManager.Roles,
+                                IsRolesEnabled = userService.RoleManager.Roles.Any()
+            });
 
 		}
 
 		[AcceptVerbs(HttpVerbs.Post)]
-		public RedirectToRouteResult CreateRole(string id)
+		public RedirectToRouteResult CreateRole(string name)
 		{
-			if (_rolesService.Enabled)
-				_rolesService.Create(id);
+            var userService = new AspNetMembershipProviderWrapper();
+		    var rs = userService.RoleManager;
+
+		    if (!rs.RoleExistsAsync(name.Trim()).Result)
+		        rs.Create(new IdentityRole() {Name = name.Trim()});
+
 			return RedirectToAction("Index");
 		}
 
 		[AcceptVerbs(HttpVerbs.Post)]
 		public RedirectToRouteResult DeleteRole(string id)
 		{
-			_rolesService.Delete(id);
+            var userService = new AspNetMembershipProviderWrapper();
+
+            var role = userService.RoleManager.FindByIdAsync(id).Result;
+		    userService.RoleManager.DeleteAsync(role);
+            
+            //_rolesService.Delete(id);
 			return RedirectToAction("Index");
 		}
 
 		public ViewResult Role(string id)
 		{
-			return View(new RoleViewModel
+            var userService = new AspNetMembershipProviderWrapper();
+
+		    var roleName = userService.RoleManager.FindByIdAsync(id).Result.Name;
+            return View(new RoleViewModel
 							{
-								Role = id,
-								Users = _rolesService.FindUserNamesByRole(id)
-													 .ToDictionary(
-														k => k,
-														v => _userService.Get(v)
-													 )
+								Role = roleName,
+								Users = userService.FindUsersByRoleId(id)
 							});
 		}
 
 		public ViewResult Details(Guid id)
 		{
-			var user = _userService.Get(id);
-			var userRoles = _rolesService.Enabled
-				? _rolesService.FindByUser(user)
-				: Enumerable.Empty<string>();
-			return View(new DetailsViewModel
+            var userService = new AspNetMembershipProviderWrapper();
+		    var user = userService.SignInManager.UserManager.Users.FirstOrDefault(w => w.Id == id.ToString());
+            //var user = _userService.Get(id);
+
+		    //var userRoles = userService.FindUsersByRoleId(id.ToString());// userService.RoleManager.Roles. _rolesService.Enabled ? _rolesService.FindByUser(user) : Enumerable.Empty<string>();
+
+            Dictionary<string, string> rolls  = user.Roles.ToDictionary(role => role.RoleId, role => userService.RoleManager.FindByIdAsync(role.RoleId).Result.Name);
+
+		    var foo = rolls;
+
+            return View(new DetailsViewModel
 							{
-								CanResetPassword = _membershipSettings.Password.ResetOrRetrieval.CanReset,
-								RequirePasswordQuestionAnswerToResetPassword = _membershipSettings.Password.ResetOrRetrieval.RequiresQuestionAndAnswer,
+								//CanResetPassword = _membershipSettings.Password.ResetOrRetrieval.CanReset,
+								//RequirePasswordQuestionAnswerToResetPassword = _membershipSettings.Password.ResetOrRetrieval.RequiresQuestionAndAnswer,
 								DisplayName = user.UserName,
 								User = user,
-								Roles = _rolesService.Enabled
-									? _rolesService.FindAll().ToDictionary(role => role, role => userRoles.Contains(role))
-									: new Dictionary<string, bool>(0),
-								IsRolesEnabled = _rolesService.Enabled,
-								Status = user.IsOnline
-											? DetailsViewModel.StatusEnum.Online
-											: !user.IsApproved
-												? DetailsViewModel.StatusEnum.Unapproved
-												: user.IsLockedOut
-													? DetailsViewModel.StatusEnum.LockedOut
-													: DetailsViewModel.StatusEnum.Offline
+								Roles = user.Roles.ToList(),
+                                Rolls = rolls,
+								IsRolesEnabled = true,// _rolesService.Enabled,
+								Status = DetailsViewModel.StatusEnum.SkiingAlps
 							});
-		}
+
+            //Status = user.IsOnline
+            //                                ? DetailsViewModel.StatusEnum.Online
+            //                                : !user.IsApproved
+            //                                    ? DetailsViewModel.StatusEnum.Unapproved
+            //                                    : user.IsLockedOut
+            //                                        ? DetailsViewModel.StatusEnum.LockedOut
+            //                                        : DetailsViewModel.StatusEnum.Offline
+
+        }
 
 		public ViewResult Password(Guid id)
 		{
@@ -134,40 +174,37 @@ namespace AliceApi.Areas.MvcMembership.Controllers
 				CanResetPassword = _membershipSettings.Password.ResetOrRetrieval.CanReset,
 				RequirePasswordQuestionAnswerToResetPassword = _membershipSettings.Password.ResetOrRetrieval.RequiresQuestionAndAnswer,
 				DisplayName = user.UserName,
-				User = user,
-				Roles = _rolesService.Enabled
-					? _rolesService.FindAll().ToDictionary(role => role, role => userRoles.Contains(role))
-					: new Dictionary<string, bool>(0),
-				IsRolesEnabled = _rolesService.Enabled,
-				Status = user.IsOnline
-							? DetailsViewModel.StatusEnum.Online
-							: !user.IsApproved
-								? DetailsViewModel.StatusEnum.Unapproved
-								: user.IsLockedOut
-									? DetailsViewModel.StatusEnum.LockedOut
-									: DetailsViewModel.StatusEnum.Offline
+				//User = user,
+				//Roles = _rolesService.Enabled
+				//	? _rolesService.FindAll().ToDictionary(role => role, role => userRoles.Contains(role))
+				//	: new Dictionary<string, bool>(0),
+				//IsRolesEnabled = _rolesService.Enabled,
+				//Status = user.IsOnline
+				//			? DetailsViewModel.StatusEnum.Online
+				//			: !user.IsApproved
+				//				? DetailsViewModel.StatusEnum.Unapproved
+				//				: user.IsLockedOut
+				//					? DetailsViewModel.StatusEnum.LockedOut
+				//					: DetailsViewModel.StatusEnum.Offline
 			});
 		}
 
 		public ViewResult UsersRoles(Guid id)
 		{
-			var user = _userService.Get(id);
-			var userRoles = _rolesService.FindByUser(user);
-			return View(new DetailsViewModel
+            var userService = new AspNetMembershipProviderWrapper();
+            var user = userService.SignInManager.UserManager.Users.FirstOrDefault(w => w.Id == id.ToString());
+            Dictionary<string, string> rolls = user.Roles.ToDictionary(role => role.RoleId, role => userService.RoleManager.FindByIdAsync(role.RoleId).Result.Name);
+
+            return View(new DetailsViewModel
 			{
-				CanResetPassword = _membershipSettings.Password.ResetOrRetrieval.CanReset,
-				RequirePasswordQuestionAnswerToResetPassword = _membershipSettings.Password.ResetOrRetrieval.RequiresQuestionAndAnswer,
+				//CanResetPassword = _membershipSettings.Password.ResetOrRetrieval.CanReset,
+				//RequirePasswordQuestionAnswerToResetPassword = _membershipSettings.Password.ResetOrRetrieval.RequiresQuestionAndAnswer,
 				DisplayName = user.UserName,
 				User = user,
-				Roles = _rolesService.FindAll().ToDictionary(role => role, role => userRoles.Contains(role)),
+				Roles = user.Roles.ToList(),
+                Rolls = rolls,
 				IsRolesEnabled = true,
-				Status = user.IsOnline
-							? DetailsViewModel.StatusEnum.Online
-							: !user.IsApproved
-								? DetailsViewModel.StatusEnum.Unapproved
-								: user.IsLockedOut
-									? DetailsViewModel.StatusEnum.LockedOut
-									: DetailsViewModel.StatusEnum.Offline
+				Status = DetailsViewModel.StatusEnum.FlyingAlaska
 			});
 		}
 

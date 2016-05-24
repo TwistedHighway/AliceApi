@@ -14,10 +14,16 @@ namespace MvcMembership
         private string[] _rolesSplit;
         private string[] _usersSplit;
 
-        public AuthorizeUnlessOnlyUserAttribute()
-            : this(new AspNetMembershipProviderWrapper(), new AspNetRoleProviderWrapper())
+
+        public AuthorizeUnlessOnlyUserAttribute() 
         {
+
         }
+
+
+        //public AuthorizeUnlessOnlyUserAttribute(): this(new AspNetMembershipProviderWrapper(), new AspNetRoleProviderWrapper())
+        //{
+        //}
 
         public AuthorizeUnlessOnlyUserAttribute(IUserService userService, IRolesService rolesService)
         {

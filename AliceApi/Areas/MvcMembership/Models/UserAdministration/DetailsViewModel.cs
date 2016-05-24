@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Web.Security;
+using AliceApi.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AliceApi.Areas.MvcMembership.Models.UserAdministration
 {
@@ -12,17 +14,22 @@ namespace AliceApi.Areas.MvcMembership.Models.UserAdministration
 			Offline,
 			Online,
 			LockedOut,
-			Unapproved
+			Unapproved,
+            Unknown,
+            SkiingAlps,
+            FlyingAlaska,
+            DivingMaldives
 		}
 
 		#endregion
 
 		public string DisplayName { get; set; }
 		public StatusEnum Status { get; set; }
-		public MembershipUser User { get; set; }
+		public ApplicationUser User { get; set; }
 		public bool CanResetPassword { get; set; }
 		public bool RequirePasswordQuestionAnswerToResetPassword { get; set; }
-		public IDictionary<string, bool> Roles { get; set; }
+		public IList<IdentityUserRole> Roles { get; set; }
+        public Dictionary<string, string> Rolls { get; set; }
 		public bool IsRolesEnabled { get; set; }
 	}
 }

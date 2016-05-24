@@ -10,26 +10,26 @@
     <h1>Membership</h1>
     <h2>User Details</h2>
 </div>*@
-<link href='@Url.Content("~/Content/MvcMembership.css")' rel="stylesheet" type="text/css" />
 
-<h2 class="mvcMembership">User Details: @Model.DisplayName [@Model.Status]</h2>
+<h2>User Administration<br/>
+<small>User Details: @Model.DisplayName [@Model.Status]</small></h2>
 
-<ul class="mvcMembership-tabs">
+<ul class="list-inline">
 	<li>Details</li>
-	<li>@Html.ActionLink("Password", "Password", "UserAdministration", new { id = Model.User.ProviderUserKey }, null)</li>
+	<li>@Html.ActionLink("Password", "Password", "UserAdministration", new { id = Model.User.Id }, null)</li>
 	@if(Model.IsRolesEnabled){
-	<li>@Html.ActionLink("Roles", "UsersRoles", "UserAdministration", new { id = Model.User.ProviderUserKey }, null)</li>
+	<li>@Html.ActionLink("Roles", "UsersRoles", "UserAdministration", new { id = Model.User.Id }, null)</li>
 	}
 </ul>
 
-<h3 class="mvcMembership">Account</h3>
-<div class="mvcMembership-account">
-	<dl class="mvcMembership">
+<h3>Account</h3>
+<div>
+	<dl>
 		<dt>User Name:</dt>
 			<dd>@Model.User.UserName</dd>
 		<dt>Email Address:</dt>
 			<dd><a href="mailto:@Model.User.Email">@Model.User.Email</a></dd>
-		@if(Model.User.LastActivityDate == Model.User.CreationDate){
+		@*@if(Model.User.LastActivityDate == Model.User.CreationDate){
 		<dt>Last Active:</dt>
 			<dd><em>Never</em></dd>
 		<dt>Last Login:</dt>
@@ -41,30 +41,30 @@
 			<dd>@Model.User.LastLoginDate.ToString("MMMM dd, yyyy h:mm:ss tt", CultureInfo.InvariantCulture)</dd>
 		}
 		<dt>Created:</dt>
-			<dd>@Model.User.CreationDate.ToString("MMMM dd, yyyy h:mm:ss tt", CultureInfo.InvariantCulture)</dd>
+			<dd>@Model.User.ToString("MMMM dd, yyyy h:mm:ss tt", CultureInfo.InvariantCulture)</dd>*@
 	</dl>
 
-	@using(Html.BeginForm("ChangeApproval", "UserAdministration", new{ id = Model.User.ProviderUserKey })){
-		@Html.Hidden("isApproved", !Model.User.IsApproved)
-		<input type="submit" value='@(Model.User.IsApproved ? "Unapprove" : "Approve") Account' />
+	@using(Html.BeginForm("ChangeApproval", "UserAdministration", new{ id = Model.User.Id })){
+		@Html.Hidden("isApproved", !Model.User.LockoutEnabled)
+		<input type="submit" value='@(Model.User.LockoutEnabled ? "Unapprove" : "Approve") Account' />
 	}
-	@using(Html.BeginForm("DeleteUser", "UserAdministration", new{ id = Model.User.ProviderUserKey })){
+	@using(Html.BeginForm("DeleteUser", "UserAdministration", new{ id = Model.User.Id })){
 		<input type="submit" value="Delete Account" />
 	}
 </div>
 
-<h3 class="mvcMembership">Email Address & Comments</h3>
-<div class="mvcMembership-emailAndComments">
-	@using(Html.BeginForm("Details", "UserAdministration", new{ id = Model.User.ProviderUserKey })){
+<h3>Email Address & Comments</h3>
+<div>
+	@using(Html.BeginForm("Details", "UserAdministration", new{ id = Model.User.Id })){
 	<fieldset>
 		<p>
 			<label for="email">Email Address:</label>
 			@Html.TextBox("email", Model.User.Email)
 		</p>
-		<p>
+		@*<p>
 			<label for="comments">Comments:</label>
 			@Html.TextArea("comments", Model.User.Comment)
-		</p>
+		</p>*@
 		<input type="submit" value="Save Email Address and Comments" />
 	</fieldset>
 	}
