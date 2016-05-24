@@ -26,7 +26,7 @@ namespace AliceApi.Controllers
 
             //NLogLogger logger = new NLogLogger();
             //logger.Info("We're on the Index page for Activities");
-            Logic.BaseDataClass.CreateMovie();
+            //Logic.BaseDataClass.CreateMovie();
             try
             {
                 //throw new Exception("A test exception");
@@ -51,5 +51,24 @@ namespace AliceApi.Controllers
 
             return View();
         }
+        
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+
+        public ActionResult ThemeView()
+        {
+            return View();
+        }
+
+
+
+        public ActionResult ChatterBox()
+        {
+            return View();
+        }
+
     }
 }

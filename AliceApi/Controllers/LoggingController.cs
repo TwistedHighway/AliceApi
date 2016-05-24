@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using AliceApi.Helpers;
 using AliceApi.Models.Repository;
 using AliceApi.Models;
-using AliceApi.ViewModels;
+using AliceApi.Models;
 
 using AliceApi.Models.Google.Visualization;
 using AliceApi.Services.Paging;
