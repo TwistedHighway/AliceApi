@@ -103,29 +103,35 @@ namespace AliceApi.Repository
             if (entity is IAuditable)
             {
                 var auditEntity = (IAuditable)entity;
-                auditEntity.CreatedDate = DateTime.Now;
+                auditEntity.CreateDate = DateTime.Now;
                 if (_userContext != null)
                 {
                     auditEntity.CreatedBy = _userContext.UserName;
+                    auditEntity.CreateDate = DateTime.Now;
+                    auditEntity.UpdatedDate = DateTime.Now;
+                    auditEntity.UpdatedBy = _userContext.UserName;
                 }
                 else
                 {
-                    auditEntity.CreatedBy = "No Domain";
+                    auditEntity.CreatedBy = "No User Specified";
+                    auditEntity.CreateDate = DateTime.Now;
+                    auditEntity.UpdatedDate = DateTime.Now;
+                    auditEntity.UpdatedBy = "No User Specified";
                 }
 
                 _dbSet.Add(entity);
             }
-            else if (entity is ICreateAuditable)
-            {
-                var auditEntity = (ICreateAuditable)entity;
-                auditEntity.DateCreated = DateTime.Now;
-                if (_userContext != null)
-                {
-                    auditEntity.CreatedBy = _userContext.UserId;
-                }
+            //else if (entity is ICreateAuditable)
+            //{
+            //    var auditEntity = (ICreateAuditable)entity;
+            //    auditEntity.CreateDate = DateTime.Now;
+            //    if (_userContext != null)
+            //    {
+            //        auditEntity.CreatedBy = _userContext.UserId;
+            //    }
 
-                _dbSet.Add(entity);
-            }
+            //    _dbSet.Add(entity);
+            //}
             else
             {
                 _dbSet.Add(entity);
@@ -186,20 +192,25 @@ namespace AliceApi.Repository
 
         public virtual void Update(TEntity entityToUpdate)
         {
+            
+
             if (_userContext != null && entityToUpdate is IAuditable)
             {
                 var auditEntity = (IAuditable)entityToUpdate;
+                auditEntity.CreateDate = auditEntity.CreateDate;
+                auditEntity.CreatedBy = auditEntity.CreatedBy;
                 auditEntity.UpdatedDate = DateTime.Now;
+                
                 if (_userContext != null)
                 {
                     //auditEntity.UpdatedBy = _userContext.UserId; // 
                     auditEntity.UpdatedBy = _userContext.UserName;
                 }
-                _loggingContext.Entry(auditEntity).State = EntityState.Modified;
+                //_loggingContext.Entry(auditEntity).State = EntityState.Modified;
             }
             else
             {
-                _loggingContext.Entry(entityToUpdate).State = EntityState.Modified;
+                //_loggingContext.Entry(entityToUpdate).State = EntityState.Modified;
             }
         }
 

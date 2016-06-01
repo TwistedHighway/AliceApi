@@ -213,3 +213,10 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/.vs/config/applicationhost.config
+/AliceApi/App_Code/Facebook.cshtml.0
+/AliceApi/App_Data
+/AliceApi/App_Readme
+/.vs
+/AliceApi.Web2
+/AliceApi.Web.Tests

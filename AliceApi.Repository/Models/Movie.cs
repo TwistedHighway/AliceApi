@@ -26,6 +26,15 @@ namespace AliceApi.Repository.Models
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> DateUpdated { get; set; }
         public string UpdatedBy { get; set; }
+        public Nullable<int> ReleaseYear { get; set; }
+        public string Runtime { get; set; }
+        public string WrittenBy { get; set; }
+        public string Actors { get; set; }
+        public string SpokenLanguage { get; set; }
+        public string CountryofOrigin { get; set; }
+        public string Awards { get; set; }
+        public string PosterImageUrl { get; set; }
+        public string imdbRating { get; set; }
     
         public virtual MovieMPAA MovieMPAA { get; set; }
     }

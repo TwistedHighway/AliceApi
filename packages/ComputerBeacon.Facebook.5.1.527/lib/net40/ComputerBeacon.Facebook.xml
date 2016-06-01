@@ -1,0 +1,2986 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ComputerBeacon.Facebook</name>
+    </assembly>
+    <members>
+        <member name="T:ComputerBeacon.Facebook.HttpContent">
+            <summary>
+            Represents content in a Http request
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.StringContent">
+            <summary>
+            Represents string content in a Http request
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.StringContent.Value">
+            <summary>
+            Value of the string
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.ByteArrayContent">
+            <summary>
+            Represents byte array content in a Http request
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.ByteArrayContent.Bytes">
+            <summary>
+            data of the content
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.ByteArrayContent.ContentType">
+            <summary>
+            Content-type of the content
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Fql.page">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.page.about">
+            <summary>
+            The About section of the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.page.access_token">
+            <summary>
+            The access token you can use to act as the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.page.keywords">
+            <summary>
+            Keywords for the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.page.name">
+            <summary>
+            The name of the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.page.page_id">
+            <summary>
+            The ID of the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.page.username">
+            <summary>
+            The alias of the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.page.website">
+            <summary>
+            The URL to the Web site of the Page
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.OAuthException">
+            <summary>
+            An authentication error on Facebook
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.FacebookException">
+            <summary>
+            An error from Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.OAuthException.Type">
+            <summary>
+            The type of this error on Facebook
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.OAuthException.ErrorType">
+            <summary>
+            Represents the type of authentication error
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.OAuthException.ErrorType.AppNotInstalled">
+            <summary>
+            The user has removed the application
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.OAuthException.ErrorType.PasswordChanged">
+            <summary>
+            The user has recently changed password
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.OAuthException.ErrorType.SessionExpired">
+            <summary>
+            The access token is expired
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.OAuthException.ErrorType.InvalidAccessToken">
+            <summary>
+            The access token is invalid
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.OAuthException.ErrorType.Unknown">
+            <summary>
+            Unknown authentication error
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Fql.permissions">
+            <summary>
+            A representation of the permissions granted to your app by a User or Page represented in FQL
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.bookmarked">
+            <summary>
+            Provides access to read if your app has been bookmarked
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.create_event">
+            <summary>
+            Create and modify events
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.create_note">
+            <summary>
+            Add or modify notes
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.friends_about_me">
+            <summary>
+            'About Me' Details
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.friends_birthday">
+            <summary>
+            Birthdays
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.photo_upload">
+            <summary>
+            Add or modify photos
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.publish_actions">
+            <summary>
+            Publish my app activity to Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.publish_checkins">
+            <summary>
+            Publish checkins on my behalf
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.publish_stream">
+            <summary>
+            Publish content to my Walld
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.read_stream">
+            <summary>
+            Access my News Feed and Wall
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.uid">
+            <summary>
+            The user ID of the current user, or the ID of the page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.permissions.user_status">
+            <summary>
+            Facebook Status
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Place">
+            <summary>
+            A place tagged in a post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Place.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Place.Id">
+            <summary>
+            The Page's ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Place.Name">
+            <summary>
+            The Page's name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Place.Location">
+            <summary>
+            The geographical location this Page represents
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Event">
+            <summary>
+            An event on Facebook
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Event.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Event.GetFeed(System.String,System.String)">
+            <summary>
+            Gets a event's wall
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Event.GetAttending(System.String,System.String)">
+            <summary>
+            Gets all the users who are attending an event
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Event.GetDeclined(System.String,System.String)">
+            <summary>
+            Gets all the users who have declined their invitation to an event
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Event.GetInvited(System.String,System.String)">
+            <summary>
+            Gets all the users who have been invited to an event
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Event.GetMaybe(System.String,System.String)">
+            <summary>
+            Gets all the users who may attend an event
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Event.GetNoreply(System.String,System.String)">
+            <summary>
+            Gets all the users who have not responded to their invitation to an event
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Event.GetPhotos(System.String,System.String)">
+            <summary>
+            Gets the photos uploaded to an event
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Event.GetVideos(System.String,System.String)">
+            <summary>
+            Gets the videos uploaded to an event
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Id">
+            <summary>
+            The event ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Owner">
+            <summary>
+            The profile that created the event
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Name">
+            <summary>
+            The event title
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.UpdatedTime">
+            <summary>
+            The last time the event was updated
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Description">
+            <summary>
+            The event description
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Location">
+            <summary>
+            The location of the event
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Privacy">
+            <summary>
+            The visibility of the event
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.TicketUrl">
+            <summary>
+            The url where users can visit to buy a ticket to this event
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Timezone">
+            <summary>
+            Any timezone that the event has
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Venue">
+            <summary>
+            Venue hosting the event, if any
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.StartTime">
+            <summary>
+            The start time of the event
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.EndTime">
+            <summary>
+            The end time of the event, if one has been set
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.IsDateOnly">
+            <summary>
+            Whether the event only has a date specified, but no time
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Event.Invitation">
+            <summary>
+            A user who is invited to an event
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Invitation.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Invitation.Name">
+            <summary>
+            The user's name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Invitation.Id">
+            <summary>
+            The user's ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Event.Invitation.RsvpStatus">
+            <summary>
+            The user's rsvp to this event
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Comment">
+            <summary>
+            A comment on Facebook
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Comment.Update(System.String,System.String,System.String)">
+            <summary>
+            Updates a Facebook comment
+            </summary>
+            <param name="id">ID of comment to update</param>
+            <param name="accessToken">Access token</param>
+            <param name="message">New comment text</param>
+            <returns>FacebookRequest object representing the request</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Comment.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Comment.GetLikes(System.String,System.String)">
+            <summary>
+            People who like this comment
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Comment.GetComments(System.String,System.String)">
+            <summary>
+            Comments that reply to this comment
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.Id">
+            <summary>
+            The Facebook ID of the comment
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.Owner">
+            <summary>
+            The user that created the comment
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.CommentCount">
+            <summary>
+            The number of replies to this comment
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.CreatedTime">
+            <summary>
+            The DateTime the comment was created
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.Message">
+            <summary>
+            The comment text
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.LikesCount">
+            <summary>
+            The number of likes on this comment
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.IsCommentable">
+            <summary>
+            Whether the viewer can reply to this comment
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.IsRemovable">
+            <summary>
+            Whether the viewer can remove this comment
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Comment.HasLiked">
+            <summary>
+            Whether the viewer has liked this comment
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Notification">
+            <summary>
+            A user's notification
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Notification.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.Id">
+            <summary>
+            The notification ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.Sender">
+            <summary>
+            The profile whose action created the notification
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.Receiver">
+            <summary>
+            The person to be notified
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.CreatedTime">
+            <summary>
+            The time which the notification was created
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.UpdatedTime">
+            <summary>
+            The time which the notification was updated
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.Title">
+            <summary>
+            The title of the notification
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.IsUnread">
+            <summary>
+            Whether this notification has not been read by the user
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.Url">
+            <summary>
+            The Url to the story behind the notification on Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Notification.Application">
+            <summary>
+            The application that created the notification
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Fql.user">
+            <summary>
+            A user profile as represented in FQL. If you need user information for analytic purposes, query the standard_user_info table instead.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.about_me">
+            <summary>
+            More information about the user being queried
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.activities">
+            <summary>
+            The user's activities
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.birthday_date">
+            <summary>
+            The user's birthday in MM/DD/YYYY format
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.books">
+            <summary>
+            The user's favorite books
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.email">
+            <summary>
+            A string containing the user's primary Facebook email address or the user's proxied email address, whichever address the user granted your application. Facebook recommends you query this field to get the email address shared with your application.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.first_name">
+            <summary>
+            The user's first name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.friend_count">
+            <summary>
+            Count of all the user's friends
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.friend_request_count">
+            <summary>
+            The user's number of outstanding friend requests
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.middle_name">
+            <summary>
+            The user's middle name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.mutual_friend_count">
+            <summary>
+            The number of mutual friends shared by the user being queried and the session user
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.name">
+            <summary>
+            The user's full name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.timezone">
+            <summary>
+            The user's timezone offset from UTC
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.uid">
+            <summary>
+            The user ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.user.username">
+            <summary>
+            The user's username
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Fql.photo">
+            <summary>
+            Query this table to return information about a photo
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.aid">
+            <summary>
+            The ID of the album containing the photo being queried. The aid cannot be longer than 50 characters. Note: Because the aid is a string, you should always wrap the aid in quotes when referenced in a query.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.caption">
+            <summary>
+            The caption for the photo being queried
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.created">
+            <summary>
+            The date when the photo being queried was added
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.link">
+            <summary>
+            The URL to the page containing the photo being queried
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.modified">
+            <summary>
+            The date when the photo being queried was last modified
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.object_id">
+            <summary>
+            The object_id of the photo.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.owner">
+            <summary>
+            The user ID of the owner of the photo being queried
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.pid">
+            <summary>
+            The ID of the photo being queried. The pid cannot be longer than 50 characters. Note: Because the pid is a string, you should always wrap the pid in quotes when referenced in a query.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.position">
+            <summary>
+            The position of the photo in the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.src">
+            <summary>
+            The URL to the album view version of the photo being queried. The image can have a maximum width or height of 130px. This URL may be blank.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.src_big">
+            <summary>
+            The URL to the full-sized version of the photo being queried. The image can have a maximum width or height of 720px, increasing to 960px on 1st March 2012. This URL may be blank.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.src_big_height">
+            <summary>
+            Height of the full-sized version, in px. This field may be blank.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.photo.src_big_width">
+            <summary>
+            Width of the full-sized version, in px. This field may be blank.
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Fql.FqlQueryInfo">
+            <summary>
+            Represents a fql query
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.FacebookRequest">
+            <summary>
+            Represents a request to Facebook
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.FacebookRequest.Timeout">
+            <summary>
+            Timeout of the request
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest.CreateGet(System.String)">
+            <summary>
+            Creates a new GET request to Facebook
+            </summary>
+            <param name="path">request path</param>
+            <returns>FacebookRequest object representing the request</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest.CreateGet(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Creates a new GET request to Facebook with the specified parameters
+            </summary>
+            <param name="path">request path</param>
+            <param name="query">request parameters</param>
+            <returns>FacebookRequest object representing the request</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest.CreatePost(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Creates a new POST request to Facebook with the specified parameters
+            </summary>
+            <param name="path">request path</param>
+            <param name="query">request parameters</param>
+            <returns>FacebookRequest object representing the request</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest.CreateMultipartPost(System.String,System.Collections.Generic.IDictionary{System.String,ComputerBeacon.Facebook.HttpContent})">
+            <summary>
+            Creates a new Multipart POST request to Facebook with the specified parameters
+            </summary>
+            <param name="path">request path</param>
+            <param name="data">request parameters</param>
+            <returns>FacebookRequest object representing the request</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest.CreateDelete(System.String,System.String)">
+            <summary>
+            Creates a new DELETE request to Facebook
+            </summary>
+            <param name="path">request path</param>
+            <param name="accessToken">Access token</param>
+            <returns>FacebookRequest object representing the request</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest.Abort">
+            <summary>
+            Cancels the request
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest.BeginGetResponse(System.AsyncCallback,System.Object)">
+            <summary>
+            Sends the request to Facebook asynchronously
+            </summary>
+            <param name="callback">Function to execute after the requets is completed</param>
+            <param name="state">State object of the request</param>
+            <returns>An System.IAsyncResult that references the asynchronous request of the response</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest.EndGetResponse">
+            <summary>
+            Finishes the asynchronous request to Facebook
+            </summary>
+            <returns>Facebook's response</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest.GetResponse">
+            <summary>
+            Sends the request to Faceook and get the response
+            </summary>
+            <returns>Facebook's response</returns>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.FacebookRequest.HaveResponse">
+            <summary>
+            Gets a value indicates whether a response have been received
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.FacebookRequest`1">
+            <summary>
+            Represents a request to Facebook that returns a strongly typed response
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest`1.Abort">
+            <summary>
+            Cancels the request
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest`1.GetResponse">
+            <summary>
+            Sends the request to Faceook and get the response
+            </summary>
+            <returns>Facebook's response</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest`1.BeginGetResponse(System.AsyncCallback,System.Object)">
+            <summary>
+            Sends the request to Facebook asynchronously
+            </summary>
+            <param name="callback">Function to execute after the requets is completed</param>
+            <param name="state">State object of the request</param>
+            <returns>An System.IAsyncResult that references the asynchronous request of the response</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.FacebookRequest`1.EndGetResponse">
+            <summary>
+            Finishes the asynchronous request to Facebook
+            </summary>
+            <returns>Facebook's response</returns>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.FacebookRequest`1.HaveResponse">
+            <summary>
+            Gets a value indicates whether a response have been received
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Album">
+            <summary>
+            A photo album on Facebook
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Album.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Album.GetPhotos(System.String,System.String)">
+            <summary>
+            Gets the photos in the specified album
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Album.GetComments(System.String,System.String)">
+            <summary>
+            Gets the comments in the specified album
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Album.GetLikes(System.String,System.String)">
+            <summary>
+            Gets the likes made on this album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.Id">
+            <summary>
+            The photo album ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.Owner">
+            <summary>
+            The profile that created this album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.Name">
+            <summary>
+            The title of the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.NavigateUrl">
+            <summary>
+            A link to this album on Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.CreatedTime">
+            <summary>
+            The time the photo album was initially created
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.UpdatedTime">
+            <summary>
+            The last time the photo album was updated
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.Count">
+            <summary>
+            The number of photos in this album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.CoverPhotoID">
+            <summary>
+            The album cover photo ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.Description">
+            <summary>
+            The description of the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.Location">
+            <summary>
+            The location of the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.Type">
+            <summary>
+            The type of the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Album.CanUplaod">
+            <summary>
+            Whether the current app can upload photos to this album
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Album.AlbumType">
+            <summary>
+             The type of a photo album
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Album.AlbumType.Profile">
+            <summary>
+            The album containing profile pictures
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Album.AlbumType.Mobile">
+            <summary>
+            An album for mobile devices
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Album.AlbumType.Wall">
+            <summary>
+            The meaning of this enumeration is not documented by Facebook
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Album.AlbumType.Normal">
+            <summary>
+            A normal photo album
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Album.AlbumType.Album">
+            <summary>
+            The meaning of this enumeration is not documented by Facebook
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Post">
+            <summary>
+            An individual entry on a profile's feed
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Post.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Post.GetComments(System.String,System.String)">
+            <summary>
+            Gets the comments of a post
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Post.GetLikes(System.String,System.String)">
+            <summary>
+            Gets the people who like a post
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Post.GetSharedposts(System.String,System.String)">
+            <summary>
+            Gets the posts that share a post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Id">
+            <summary>
+            The post ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Owner">
+            <summary>
+            The profile who posted the message
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Targets">
+            <summary>
+            Profiles mentioned or targeted in this post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Actions">
+            <summary>
+            A list of available actions on the post (including commenting, liking, and an optiona app-specified action)
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Aplication">
+            <summary>
+            The application used to create the post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.CreatedTime">
+            <summary>
+            The time the post was initially published
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.IconUrl">
+            <summary>
+            The Url to an icon representing the type of this post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.LinkedUrl">
+            <summary>
+            A link attached to the post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Message">
+            <summary>
+            The message of the post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.ObjectId">
+            <summary>
+            The ID of any uploaded photo or video attached to the post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Place">
+            <summary>
+            Location associated with this status, if any
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.PictureUrl">
+            <summary>
+            The Url to the picture in the post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.StatusType">
+            <summary>
+            The type of status update
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Story">
+            <summary>
+            Text from stories not intentionally generated by users, such as those generated when two people become friends
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.UpdatedTime">
+            <summary>
+            The time of the last comment on the post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.WithTags">
+            <summary>
+            objects tagged as being with the publisher of the post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Comments">
+            <summary>
+            Comments on this post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.Likes">
+            <summary>
+            Users who like this post
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Post.PostAction">
+            <summary>
+            An action available on a post
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.PostAction.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.PostAction.Name">
+            <summary>
+            The name of the action
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Post.PostAction.Url">
+            <summary>
+            The Url of the action
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Post.PostStatusType">
+            <summary>
+             Type of a status update
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.MobileStatusUpdate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.WallPost">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.CreatedNote">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.CreatedGroup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.CreatedEvent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.AddedPhotos">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.AddedVideo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.PublishedStory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.SharedStory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.AppCreatedStory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.TaggedInPhoto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Post.PostStatusType.ApprovedFriend">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Page">
+            <summary>
+            A Facebook Page
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.GetAlbums(System.String,System.String)">
+            <summary>
+            Gets the photo albums a Page has uploaded
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.GetFeed(System.String,System.String)">
+            <summary>
+            Gets a Page's wall
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.GetLinks(System.String,System.String)">
+            <summary>
+            Gets a Page's posted links
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.GetMilestones(System.String,System.String)">
+            <summary>
+            Gets a Page's milestones
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.GetOffers(System.String,System.String)">
+            <summary>
+            Gets a Page's offers
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.GetPhotos(System.String,System.String)">
+            <summary>
+            Gets a Page's uploaded photos
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.GetPosts(System.String,System.String)">
+            <summary>
+            Gets a Page's own posts
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.GetVideos(System.String,System.String)">
+            <summary>
+            Gets the videos a Page has uploaded
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Id">
+            <summary>
+            The Page's ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Name">
+            <summary>
+            The Page's name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.NavigateUrl">
+            <summary>
+            The Url to the Page on Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Username">
+            <summary>
+            Alias of the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.About">
+            <summary>
+            Information about the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Category">
+            <summary>
+            The Page's category
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.CheckinsCount">
+            <summary>
+            The number of checkins at a place represented by the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.GeneralInfo">
+            <summary>
+            The general information provided by the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.LikesCount">
+            <summary>
+            The number of users who like the Page.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Location">
+            <summary>
+            The geographical location this Page represents
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.IsPermanentlyClosed">
+            <summary>
+            Whether the business is no longer operating
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.IsPublished">
+            <summary>
+            Whether the page is published and visible to non-admins
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Phone">
+            <summary>
+            The phone number provided by the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.TalkingAboutCount">
+            <summary>
+            The number of people talking about the page in the last 7 days
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Website">
+            <summary>
+            The Url to the Page's website
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.CompanyOverview">
+            <summary>
+            THe company overview. Applicable to companies
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Founded">
+            <summary>
+            When the company is founded. Applicalbe to companies
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Mission">
+            <summary>
+            The company mission. Applicable to companies
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Products">
+            <summary>
+            The products of the company. Applicable to companies
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.BandMembers">
+            <summary>
+            Members of the band. Applicable to bands
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.BookingAgent">
+            <summary>
+            Members of the band. Applicable to bands
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Hometown">
+            <summary>
+            Hometown of the band. Applicable to bands
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.PressContact">
+            <summary>
+            Press contact information of the band. Applicable to bands
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.DirectedBy">
+            <summary>
+            The director of the film. Applicable to films
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.GeneralManager">
+            <summary>
+            General manager of the business. Applicable to restaurants or nightlife
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.CanPost">
+            <summary>
+            Whether the current user can post on the Page
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Page.Milestone">
+            <summary>
+            A milestone on a Facebook Page
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.Milestone.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Milestone.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Milestone.Id">
+            <summary>
+            The milestone ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Milestone.Owner">
+            <summary>
+            The Page that posted the milestone
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Milestone.Title">
+            <summary>
+            The title of the milestone
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Milestone.Description">
+            <summary>
+            The description of the milestone
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Milestone.CreatedTime">
+            <summary>
+            The time the milestone was created
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Milestone.UpdatedTime">
+            <summary>
+            The time the milestone was updated
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Milestone.StartTime">
+            <summary>
+            The start time of the milestone
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Page.Offer">
+            <summary>
+            An offer published by a Facebook Page
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Page.Offer.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.Id">
+            <summary>
+            The offer ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.Owner">
+            <summary>
+            The Page that published the offer
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.CreatedTime">
+            <summary>
+            The time the offer was created
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.ClaimLimit">
+            <summary>
+            The maximum number of times the offer can be claimed
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.CouponType">
+            <summary>
+            The type of the offer
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.ExpirationTime">
+            <summary>
+            The expiration time of the offer
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.ImageUrl">
+            <summary>
+            The url of the offer's image
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.HasPublished">
+            <summary>
+            Whether the offer has been published or not
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.RedemptionCode">
+            <summary>
+            A code to receive the discount or promotion
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.RedemptionUrl">
+            <summary>
+            The Url where the offer may be redeemed
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.Terms">
+            <summary>
+            The terms of the offer
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.Title">
+            <summary>
+            The title of the offer
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Page.Offer.Message">
+            <summary>
+            The description text of the offer
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Thread">
+            <summary>
+            A Facebook Messages conversation thread
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Thread.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Thread.Id">
+            <summary>
+            The message thread ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Thread.Recipients">
+            <summary>
+            The profiles that are subscribed to this thread
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Thread.Messages">
+            <summary>
+            The messages in this thread
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Thread.UnreadCount">
+            <summary>
+            The number of messages that are unread by the session profile
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Thread.UnseenCount">
+            <summary>
+            The number of messages that are unseen by the session profile
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Thread.UpdatedTime">
+            <summary>
+            The time when this thread was last updated
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Video">
+            <summary>
+            A video on Facebook
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Video.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Video.GetComments(System.String,System.String)">
+            <summary>
+            Gets the comments on a video
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Video.GetLikes(System.String,System.String)">
+            <summary>
+            Gets the users who like a video
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Video.GetSharedposts(System.String,System.String)">
+            <summary>
+            Gets the posts that share a video
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.Id">
+            <summary>
+            The video ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.Owner">
+            <summary>
+            The profile that created the video
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.CreatedTime">
+            <summary>
+            The time the video was initially published
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.Description">
+            <summary>
+            The description of the video
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.EmbedHtml">
+            <summary>
+            The html element that may be embedded in a web page to play the video
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.VideoFormats">
+            <summary>
+            The different formats of the video
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.IconUrl">
+            <summary>
+            The url to the icon that Facebook displays when video are published to the feed
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.Name">
+            <summary>
+            The video title or caption
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.ThumbnailUrl">
+            <summary>
+            The url to the thumbnail picture of the video
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.SourceUrl">
+            <summary>
+            The url to the raw, playable video file
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.UpdatedTime">
+            <summary>
+            The last time the video or its caption was updated
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Video.VideoFormat">
+            <summary>
+            A format of a video
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.VideoFormat.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.VideoFormat.EmbedHtml">
+            <summary>
+            The html element that may be embedded in a web page to play the video
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.VideoFormat.FilterText">
+            <summary>
+            The filter applied to this video format
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.VideoFormat.Height">
+            <summary>
+            The height of the video in this format
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.VideoFormat.ThumbnailUrl">
+            <summary>
+            The url to the thumbnail picture of the video
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Video.VideoFormat.Width">
+            <summary>
+            The width of the video in this format
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Fql.FqlContext">
+            <summary>
+            Enables query to FQL
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Fql.FqlContext.#ctor(System.String)">
+            <summary>
+            Constructs a new instance using the given access token
+            </summary>
+            <param name="accessToken">Access Token</param>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Fql.FqlContext.me">
+            <summary>
+            The current session user's id
+            </summary>
+            <returns>The current session user's id</returns>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.FqlContext.album">
+            <summary>
+            An album of photos or videos as represented in FQL
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.FqlContext.friend">
+            <summary>
+            An FQL table that can be used to return a list of a user's friends or to show whether two users are friends
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.FqlContext.like">
+            <summary>
+            An FQL table that returns the IDs of users who like a given object (video, note, link, photo, or album).
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.FqlContext.page">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.FqlContext.permissions">
+            <summary>
+            A representation of the permissions granted to your app by a User or Page represented in FQL
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.FqlContext.photo">
+            <summary>
+            Query this table to return information about a photo
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.FqlContext.user">
+            <summary>
+            A user profile as represented in FQL. If you need user information for analytic purposes, query the standard_user_info table instead.
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Photo">
+            <summary>
+            A photo on Facebook
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Photo.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Photo.GetComments(System.String,System.String)">
+            <summary>
+            Gets the comments on a photo
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Photo.GetLikes(System.String,System.String)">
+            <summary>
+            Gets the users who like this photo
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Photo.GetTags(System.String,System.String)">
+            <summary>
+            Gets the tags on a photo
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Id">
+            <summary>
+            The Photo ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Owner">
+            <summary>
+            The profile that posted the photo
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.NavigateUrl">
+            <summary>
+            A link to the photo on Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.CreatedTime">
+            <summary>
+            The time the photo was initially uploaded
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Height">
+            <summary>
+            The hight of the photo in pixels
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.IconUrl">
+            <summary>
+            The icon that Facebook displays when photos are published to newsfeed
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Name">
+            <summary>
+            The user provided caption of the photo
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.ThumbnailUrl">
+            <summary>
+            The Url to the 100px wide source of the photo
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.FullResolutionUrl">
+            <summary>
+            The Url to the full-sized source of the photo
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Width">
+            <summary>
+            The width of the photo in pixels
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.UpdatedTime">
+            <summary>
+            The time the photo or its caption was updated
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Tags">
+            <summary>
+            The tags in the photo. Returns null if there are no tags
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Photo.Source">
+            <summary>
+            An image source on Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Source.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Source.Height">
+            <summary>
+            Height of the image
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Source.Url">
+            <summary>
+            Url to the image
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.Source.Width">
+            <summary>
+            Width of the image
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Photo.PhotoTag">
+            <summary>
+            A tag in a photo
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.PhotoTag.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.PhotoTag.Id">
+            <summary>
+            ID of subject
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.PhotoTag.Name">
+            <summary>
+            Name of subject
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.PhotoTag.X">
+            <summary>
+            X coordinate of tag
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.PhotoTag.Y">
+            <summary>
+            Y coordinate of tag
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Photo.PhotoTag.CreatedTime">
+            <summary>
+            The time the tag was created
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Location">
+            <summary>
+            A geographic location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.Id">
+            <summary>
+            ID of the Page representing the location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.Street">
+            <summary>
+            The street of the location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.City">
+            <summary>
+            The city of the location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.State">
+            <summary>
+            The state of the location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.Country">
+            <summary>
+            The country of the location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.Zip">
+            <summary>
+            The zip code of the location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.LocatedIn">
+            <summary>
+            The parent location if this location is located within another location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.Latitude">
+            <summary>
+            The latitude of the location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Location.Longitude">
+            <summary>
+            The longitude of the location
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Fql.friend">
+            <summary>
+            An FQL table that can be used to return a list of a user's friends or to show whether two users are friends
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.friend.uid1">
+            <summary>
+            The user ID of the first user in a particular friendship link
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.friend.uid2">
+            <summary>
+            The user ID of the second user in a particular friendship link
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Status">
+            <summary>
+            A status message on a user's wall
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Status.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Status.GetComments(System.String,System.String)">
+            <summary>
+            Gets the comments on a status
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Status.GetLikes(System.String,System.String)">
+            <summary>
+            Gets the users who have liked a status
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Status.GetSharedposts(System.String,System.String)">
+            <summary>
+            Gets the posts that share a status
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Status.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Status.Id">
+            <summary>
+            The status message ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Status.Owner">
+            <summary>
+            The user who posted the message
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Status.Message">
+            <summary>
+            The status message content
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Status.Place">
+            <summary>
+            The location associated with the status, if there is one
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Status.UpdatedTime">
+            <summary>
+            The time the message was published
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Status.Likes">
+            <summary>
+            The users who have liked the message
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Status.Comments">
+            <summary>
+            The comments on the message
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Rsvp">
+            <summary>
+             A user's rsvp to an event
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Rsvp.NotReplied">
+            <summary>
+            The user has not replied to the invitation yet
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Rsvp.Maybe">
+            <summary>
+            The user may attend the event
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Rsvp.Attending">
+            <summary>
+            The user is going to attend the event
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.Rsvp.Declined">
+            <summary>
+            The user has declined the invitation to the event
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Fql.like">
+            <summary>
+            An FQL table that returns the IDs of users who like a given object (video, note, link, photo, or album).
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.like.object_id">
+            <summary>
+            The object_id of a video, note, link, photo, or album.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.like.post_id">
+            <summary>
+            The id of a post on Facebook. This can be a stream post containing a status, video, note, link, photo, or photo album. Note: These post IDs must be queried from the stream FQL table.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.like.user_id">
+            <summary>
+            The user who likes this object.Note: Indexable only for the current session user with read_stream permission.
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.User">
+            <summary>
+            A Facebook user
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetAccounts(System.String,System.String)">
+            <summary>
+            Gets the Facebook Pages of which the user is an admin
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetActivities(System.String,System.String)">
+            <summary>
+            Gets the activities listed on a user's profile
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetAlbums(System.String,System.String)">
+            <summary>
+            Gets the photos albums a user has created
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetEvents(System.String,System.String)">
+            <summary>
+            Gets the events a user is or maybe attending
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetFamily(System.String,System.String)">
+            <summary>
+            Gets a user's family members
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetFeed(System.String,System.String)">
+            <summary>
+            Gets a user's wall
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetFriends(System.String,System.String)">
+            <summary>
+            Gets a user's friends
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetFriendlists(System.String,System.String)">
+            <summary>
+            Gets a user's friend lists
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetGames(System.String,System.String)">
+            <summary>
+            Gets the games listed on a user's profile
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetGroups(System.String,System.String)">
+            <summary>
+            Gets the groups a user belongs to
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetHome(System.String,System.String)">
+            <summary>
+            Gets a user's news feed
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetInbox(System.String,System.String)">
+            <summary>
+            Gets the threads in a user's inbox
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetInterests(System.String,System.String)">
+            <summary>
+            Gets the interests listed on a user's profile
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetLikes(System.String,System.String)">
+            <summary>
+            Gets the Pages liked by a user
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetLinks(System.String,System.String)">
+            <summary>
+            Gets a user's posted links
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetMovies(System.String,System.String)">
+            <summary>
+            Gets the movies listed on a user's profile
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetMusic(System.String,System.String)">
+            <summary>
+            Gets the music listed on a user's profile
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetNotifications(System.String,System.String)">
+            <summary>
+            Gets the unread notifications a user has
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetOutbox(System.String,System.String)">
+            <summary>
+            Gets the threads in a user's outbox
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetPosts(System.String,System.String)">
+            <summary>
+            Gets a user's own posts
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetPhotos(System.String,System.String)">
+            <summary>
+            Gets the photos the user is tagged in
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetStatuses(System.String,System.String)">
+            <summary>
+            Gets a user's status updates
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetTelevision(System.String,System.String)">
+            <summary>
+            Gets the television listed on a user's profile
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetVideos(System.String,System.String)">
+            <summary>
+            Gets the videos a user has been tagged in
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.GetPermissions(System.String,System.String)">
+            <summary>
+            Read the permissions granted by the user to the current application
+            </summary>
+            <param name="id">user Id</param>
+            <param name="accessToken">access token</param>
+            <returns>permissions which the user has granted to the application</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.CreateAlbum(System.String,System.String,System.String,System.String)">
+            <summary>
+            Create an album for a user
+            </summary>
+            <param name="id">user Id</param>
+            <param name="accessToken">Access Token</param>
+            <param name="name">album name</param>
+            <param name="message">album description</param>
+            <returns>The new album Id</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.CreateNote(System.String,System.String,System.String,System.String)">
+            <summary>
+            Create a note on behalf of the user
+            </summary>
+            <param name="id">user Id</param>
+            <param name="accessToken">access token</param>
+            <param name="subject">The subject of the note</param>
+            <param name="message">note content</param>
+            <returns>The new note Id</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.CreateStatus(System.String,System.String,System.String)">
+            <summary>
+            Post a status message on behalf of the user
+            </summary>
+            <param name="id">user Id</param>
+            <param name="accessToken">Access Token</param>
+            <param name="message">status message content</param>
+            <returns>The new status message Id</returns>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Id">
+            <summary>
+            The user's Facebook ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.NavigateUrl">
+            <summary>
+            The Url to the user's profile on Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Name">
+            <summary>
+            The user's full name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.FirstName">
+            <summary>
+            The user's first name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.MiddleName">
+            <summary>
+            The user's middle name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.LastName">
+            <summary>
+            The user's last name
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Locale">
+            <summary>
+            The user's locale
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Timezone">
+            <summary>
+            The user's timezone offset from UTC
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Gender">
+            <summary>
+            The user's gender
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.IsAccountVerified">
+            <summary>
+            Whether the user's account is verified
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.About">
+            <summary>
+            The 'about me' section of this person's profile
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Biography">
+            <summary>
+            The user's biography
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Email">
+            <summary>
+            The primary email addresss of the user. Note that this field may be null.
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Hometown">
+            <summary>
+            The user's hometown
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Location">
+            <summary>
+            The user's current location
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Political">
+            <summary>
+            The user's political view
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Quotes">
+            <summary>
+            The user's favorite quotes
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Religion">
+            <summary>
+            The user's religion
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.RelationshipStatus">
+            <summary>
+            The user's relationship status
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.Website">
+            <summary>
+            The user's website
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.User.UserGender">
+            <summary>
+             A user's gender
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.UserGender.Female">
+            <summary>
+            Female
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.UserGender.Male">
+            <summary>
+            Male
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.User.Relationship">
+            <summary>
+             A user's relationship status
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.Single">
+            <summary>
+            Single
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.InRelationship">
+            <summary>
+            In a relationship
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.Engaged">
+            <summary>
+            Engaged
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.Married">
+            <summary>
+            Married
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.Complicated">
+            <summary>
+            It's complicated
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.Open">
+            <summary>
+            In an open relationship
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.Widowed">
+            <summary>
+            Widowed
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.Seperated">
+            <summary>
+            Seperated
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.Divorced">
+            <summary>
+            Divorced
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.CivilUnion">
+            <summary>
+            In a civil union
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.Relationship.DomesticPartnership">
+            <summary>
+            In a domestic partnership
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.User.EventResponse">
+            <summary>
+            An event which the user is being invited
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.EventResponse.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.EventResponse.Id">
+            <summary>
+            The event ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.EventResponse.Name">
+            <summary>
+            The event title
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.EventResponse.Location">
+            <summary>
+            The location of the event
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.EventResponse.StartTime">
+            <summary>
+            The start time of the event
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.EventResponse.EndTime">
+            <summary>
+            The end time of the event, if availble
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.EventResponse.RsvpStatus">
+            <summary>
+            The user's rsvp to the event
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.User.FamilyMember">
+            <summary>
+            A family member of a user
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.FamilyMember.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.FamilyMember.Id">
+            <summary>
+            The user ID of the family member
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.FamilyMember.Name">
+            <summary>
+            The name of the family member
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.FamilyMember.Relationship">
+            <summary>
+            The relationship of the family member to the current user
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.User.FriendList">
+            <summary>
+            A grouping of friends created by the user or generated automatically
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.User.FriendList.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.FriendList.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.FriendList.Id">
+            <summary>
+            The friend list ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.FriendList.Name">
+            <summary>
+            The name of the friend list
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.FriendList.ListType">
+            <summary>
+            The type of the friend list
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.User.FriendList.FriendListType">
+            <summary>
+             The type of the friend list
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.FriendList.FriendListType.CloseFriends">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.FriendList.FriendListType.Acquaintances">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.FriendList.FriendListType.Restricted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.FriendList.FriendListType.UserCreated">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.FriendList.FriendListType.Education">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.FriendList.FriendListType.Work">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.FriendList.FriendListType.CurrentCity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.User.FriendList.FriendListType.Family">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.User.GroupConnection">
+            <summary>
+            A user's bookmark of a Facebook group
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.GroupConnection.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.GroupConnection.Id">
+            <summary>
+            The group ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.GroupConnection.Name">
+            <summary>
+            The name of the group
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.GroupConnection.IsAdmin">
+            <summary>
+            True if the user is an admin of the group, null otherwise
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.GroupConnection.BookmarkOrder">
+            <summary>
+            The position of the bookmark in the user's group list
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.GroupConnection.UnreadCount">
+            <summary>
+            The number of unread posts in the group
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.User.PageLike">
+            <summary>
+            A page like by a user
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.PageLike.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.PageLike.Id">
+            <summary>
+            Page ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.PageLike.Name">
+            <summary>
+            Name of the Page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.PageLike.Category">
+            <summary>
+            Category of the page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.User.PageLike.LikedTime">
+            <summary>
+            The time the user liked the Page
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.NameIdPair">
+            <summary>
+            An ID and the name of a Facebook object
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.NameIdPair.ToString">
+            <summary>
+            Returns the string representation of this Name and ID pair
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.NameIdPair.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.NameIdPair.Name">
+            <summary>
+            Name of object
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.NameIdPair.Id">
+            <summary>
+            Facebook ID of object
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.OrganizationPrivacy">
+            <summary>
+             The privacy setting of an event or group
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.OrganizationPrivacy.Open">
+            <summary>
+            Anyone is allowed to join
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.OrganizationPrivacy.Closed">
+            <summary>
+            Only invited members are allowed to join
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Graph.OrganizationPrivacy.Secret">
+            <summary>
+            The event or group is not visible to other users
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Group">
+            <summary>
+            A Facebook group
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Group.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Group.GetEvents(System.String,System.String)">
+            <summary>
+            Gets the events in this group
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Group.GetFeed(System.String,System.String)">
+            <summary>
+            Gets a group's wall
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Group.GetMembers(System.String,System.String)">
+            <summary>
+            Gets the first 500 members of a group
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.Id">
+            <summary>
+            The group ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.Owner">
+            <summary>
+            The profile that created this group
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.Name">
+            <summary>
+            The name of the group
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.Description">
+            <summary>
+            A brief description of the group
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.IconUrl">
+            <summary>
+            The Url of the grou's icon
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.Url">
+            <summary>
+            The Url of the group's website
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.Privacy">
+            <summary>
+            The privacy setting of the group
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.UpdatedTime">
+            <summary>
+            The last time the group was updated
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Group.GroupMember">
+            <summary>
+            A member in a Facebook group
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupMember.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupMember.Name">
+            <summary>
+            The name of the member
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupMember.Id">
+            <summary>
+            The userID of the member
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupMember.IsAdministrator">
+            <summary>
+            Whether the member is an administrator of the group
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Group.GroupDoc">
+            <summary>
+            A doc within a Facebook Group
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Group.GroupDoc.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.Id">
+            <summary>
+            The Group Doc ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.Owner">
+            <summary>
+            The profile that created this doc
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.Subject">
+            <summary>
+            The title of the Doc
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.Message">
+            <summary>
+            The HTML string of the Doc
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.Revision">
+            <summary>
+            The current revision of the Doc
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.IconUrl">
+            <summary>
+            The URL of the Doc's icon
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.CreatedTime">
+            <summary>
+            When the Doc was created
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.UpdatedTime">
+            <summary>
+            The last time the Doc was changed
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.CanEdit">
+            <summary>
+            Whether the session user can edit this doc on Facebook.com
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Group.GroupDoc.CanDelete">
+            <summary>
+            Whether the session user can delete this doc on Facebook.com
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Link">
+            <summary>
+            A link shared on a Facebook wall
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Link.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Link.GetComments(System.String,System.String)">
+            <summary>
+            Gets all the comments on a link
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Link.GetLikes(System.String,System.String)">
+            <summary>
+            Gets all the users who like a link
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.Id">
+            <summary>
+            The link ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.Owner">
+            <summary>
+            The user that created the link
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.SharedUrl">
+            <summary>
+            The Url that was shared
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.Name">
+            <summary>
+            The name of the link
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.Description">
+            <summary>
+            A description of the link
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.Message">
+            <summary>
+            An optional message from the user about the link
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.IconUrl">
+            <summary>
+            The Url to the link icon that Facebook displays in the news feed
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.ThumbnailUrl">
+            <summary>
+            The url to the thumbnail image used in the link
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Link.CreatedTime">
+            <summary>
+            The time the message was published
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Api">
+            <summary>
+            Includes helper methods for making api calls to Facebook
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Api.Get(System.String,System.String)">
+            <summary>
+            Sends a GET request to Graph Api
+            </summary>
+            <param name="path">path of request</param>
+            <param name="accessToken">Access token</param>
+            <returns>Facebook's response</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Api.Get(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Sends a GET request to Graph Api with the specified parameters
+            </summary>
+            <param name="path">path of request</param>
+            <param name="query">parameters of request</param>
+            <returns>Facebook's response</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Api.Post(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Sends a POST request to Graph Api
+            </summary>
+            <param name="path">path of request</param>
+            <param name="query">parameters of request</param>
+            <returns>Facebook's response</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Api.Delete(System.String,System.String)">
+            <summary>
+            Sends a DELETE request to Graph Api for deleting objects on Facebook
+            </summary>
+            <param name="path">path of request</param>
+            <param name="accessToken">Access token</param>
+            <returns>Whether the delete operation is successful</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Api.Fql(System.String,System.String)">
+            <summary>
+            Perform a FQL query on Facebook
+            </summary>
+            <param name="query">FQL query</param>
+            <param name="accessToken">Access Token</param>
+            <returns>List of objects returend from the query</returns>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Api.GetConnectionObjects(System.String,System.String,System.String)">
+            <summary>
+            Gets a list of objects in a connection of a Graph Api object
+            </summary>
+            <param name="id">Graph Api object id</param>
+            <param name="connection">Name of connection</param>
+            <param name="accessToken">Access Token</param>
+            <returns>List of objects in the connection</returns>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Message">
+            <summary>
+            An individual message in the Facebook messaging system
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Message.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Message.Id">
+            <summary>
+            The message ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Message.Owner">
+            <summary>
+            The user who sent the message
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Message.Text">
+            <summary>
+            The text of the message
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Message.CreatedTime">
+            <summary>
+            The time when this message was sent
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Graph.Application">
+            <summary>
+            An application on Facebook
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Graph.Application.#ctor(System.String,System.String)">
+            <summary>
+            Gets the object with the specified object id and access token
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Application.data">
+            <summary>
+            Gets the JSON object that stores the data returned by Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Application.Id">
+            <summary>
+            The application ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Application.Name">
+            <summary>
+            The title of the application
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Application.NavigateUrl">
+            <summary>
+            A link to the application's Page on Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Application.Category">
+            <summary>
+            The category of the application
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Application.Company">
+            <summary>
+            The company the application belongs to
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Application.Description">
+            <summary>
+            The description of the application written by 3rd party developers
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Application.Namespace">
+            <summary>
+            The namespace of the app
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Graph.Application.SubCategory">
+            <summary>
+            The subcategory of the application
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Fql.album">
+            <summary>
+            An album of photos or videos as represented in FQL
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.aid">
+            <summary>
+            The album ID
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.cover_object_id">
+            <summary>
+            The album cover photo object_id
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.cover_pid">
+            <summary>
+            The album cover photo ID string
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.created">
+            <summary>
+            The time the photo album was initially created expressed as UNIX time
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.description">
+            <summary>
+            The description of the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.link">
+            <summary>
+            A link to this album on Facebook
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.location">
+            <summary>
+            The location of the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.modified">
+            <summary>
+            The last time the photo album was updated expressed as UNIX time
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.modified_major">
+            <summary>
+            Indicates the time a major update (like addition of photos) was last made to the album expressed as UNIX time
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.name">
+            <summary>
+            The title of the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.object_id">
+            <summary>
+            The object_id of the album on Facebook. This is used to identify the equivalent Album object in the Graph API. You can also use the object_id to let users comment on an album with the Graph API Comments
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.owner">
+            <summary>
+            The user ID of the owner of the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.photo_count">
+            <summary>
+            The number of photos in the album
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Fql.album.video_count">
+            <summary>
+            The number of videos in the album
+            </summary>
+        </member>
+    </members>
+</doc>

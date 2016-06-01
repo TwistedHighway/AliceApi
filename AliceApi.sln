@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliceApi", "AliceApi\AliceApi.csproj", "{BA798931-1D88-4D52-A5F9-F5508182A1AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliceApi.Common", "AliceApi.Common\AliceApi.Common.csproj", "{45DD0742-8AA1-42B4-8A09-4606647F38ED}"
@@ -28,8 +30,6 @@ Global
 		{B9ED33FD-0F16-4D98-89B9-E2AD2B8FFB3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9ED33FD-0F16-4D98-89B9-E2AD2B8FFB3E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8101D404-F8DF-4D17-B72F-3CE4A16BBEEF}.Release|Any CPU.Deploy.0 = Release|Any CPU

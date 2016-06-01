@@ -5,6 +5,44 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BaseDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MemberProfiles">
+          <Key>
+            <PropertyRef Name="MemberProfileId" />
+          </Key>
+          <Property Name="MemberProfileId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AspNetUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ApplicationId" Type="uniqueidentifier" />
+          <Property Name="LocalUserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="PublicUserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="PrimaryEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="SecondaryEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="ProfileDescription" Type="nvarchar(max)" />
+          <Property Name="ProfileTimeZone" Type="nvarchar" MaxLength="128" />
+          <Property Name="ProfileLanguage" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="256" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MemberProfileId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreferredName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberType" Type="int" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="FacebookHomeUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="MemberEmail" Type="nvarchar" MaxLength="128" />
+        </EntityType>
         <EntityType Name="MovieGenre">
           <Key>
             <PropertyRef Name="GenreId" />
@@ -25,7 +63,7 @@
           </Key>
           <Property Name="MovieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Genre" Type="int" />
-          <Property Name="MovieTitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="MovieTitle" Type="nvarchar" MaxLength="250" />
           <Property Name="ReleaseDate" Type="datetime" />
           <Property Name="DirectedBy" Type="nvarchar" MaxLength="150" />
           <Property Name="Summary" Type="nvarchar(max)" />
@@ -35,14 +73,15 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="DateUpdated" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="UserPreferences">
-          <Key>
-            <PropertyRef Name="UserPreferenceId" />
-          </Key>
-          <Property Name="UserPreferenceId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="PerfValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReleaseYear" Type="int" />
+          <Property Name="Runtime" Type="nvarchar" MaxLength="150" />
+          <Property Name="WrittenBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="Actors" Type="nvarchar(max)" />
+          <Property Name="SpokenLanguage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryofOrigin" Type="nvarchar" MaxLength="50" />
+          <Property Name="Awards" Type="nvarchar" MaxLength="50" />
+          <Property Name="PosterImageUrl" Type="nvarchar(max)" />
+          <Property Name="imdbRating" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Movies_MovieMPRG">
           <End Role="MovieMPAA" Type="Self.MovieMPAA" Multiplicity="1" />
@@ -56,14 +95,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProfileMembers_MembershipProfiles">
+          <End Role="MemberProfiles" Type="Self.MemberProfiles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Members" Type="Self.Members" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberProfiles">
+              <PropertyRef Name="MemberProfileId" />
+            </Principal>
+            <Dependent Role="Members">
+              <PropertyRef Name="MemberProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BaseDataModelStoreContainer">
+          <EntitySet Name="MemberProfiles" EntityType="Self.MemberProfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MovieGenre" EntityType="Self.MovieGenre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MovieMPAA" EntityType="Self.MovieMPAA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserPreferences" EntityType="Self.UserPreferences" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Movies_MovieMPRG" Association="Self.FK_Movies_MovieMPRG">
             <End Role="MovieMPAA" EntitySet="MovieMPAA" />
             <End Role="Movies" EntitySet="Movies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMembers_MembershipProfiles" Association="Self.FK_ProfileMembers_MembershipProfiles">
+            <End Role="MemberProfiles" EntitySet="MemberProfiles" />
+            <End Role="Members" EntitySet="Members" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -71,7 +129,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="BaseDataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BaseEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="UserPreferences" EntityType="BaseDataModel.UserPreference" />
           <EntitySet Name="MovieGenres" EntityType="BaseDataModel.MovieGenre" />
           <EntitySet Name="MovieMPAAs" EntityType="BaseDataModel.MovieMPAA" />
           <EntitySet Name="Movies1" EntityType="BaseDataModel.Movie" />
@@ -79,15 +136,13 @@
             <End Role="MovieMPAA" EntitySet="MovieMPAAs" />
             <End Role="Movy" EntitySet="Movies1" />
           </AssociationSet>
+          <EntitySet Name="MemberProfiles" EntityType="BaseDataModel.MemberProfile" />
+          <EntitySet Name="Members" EntityType="BaseDataModel.Member" />
+          <AssociationSet Name="FK_ProfileMembers_MembershipProfiles" Association="BaseDataModel.FK_ProfileMembers_MembershipProfiles">
+            <End Role="MemberProfile" EntitySet="MemberProfiles" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="UserPreference">
-          <Key>
-            <PropertyRef Name="UserPreferenceId" />
-          </Key>
-          <Property Name="UserPreferenceId" Type="Guid" Nullable="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="PerfValue" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-        </EntityType>
         <EntityType Name="MovieGenre">
           <Key>
             <PropertyRef Name="GenreId" />
@@ -109,7 +164,7 @@
           </Key>
           <Property Name="MovieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Genre" Type="Int32" />
-          <Property Name="MovieTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MovieTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="ReleaseDate" Type="DateTime" Precision="3" />
           <Property Name="DirectedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -120,6 +175,15 @@
           <Property Name="DateUpdated" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MovieMPAA" Relationship="BaseDataModel.FK_Movies_MovieMPRG" FromRole="Movy" ToRole="MovieMPAA" />
+          <Property Name="ReleaseYear" Type="Int32" />
+          <Property Name="Runtime" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="WrittenBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Actors" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SpokenLanguage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryofOrigin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Awards" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PosterImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="imdbRating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Movies_MovieMPRG">
           <End Type="BaseDataModel.MovieMPAA" Role="MovieMPAA" Multiplicity="1" />
@@ -133,21 +197,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MemberProfile">
+          <Key>
+            <PropertyRef Name="MemberProfileId" />
+          </Key>
+          <Property Name="MemberProfileId" Type="Guid" Nullable="false" />
+          <Property Name="AspNetUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="Guid" />
+          <Property Name="LocalUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PublicUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileTimeZone" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileLanguage" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Members" Relationship="BaseDataModel.FK_ProfileMembers_MembershipProfiles" FromRole="MemberProfile" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberId" />
+          </Key>
+          <Property Name="MemberId" Type="Guid" Nullable="false" />
+          <Property Name="MemberProfileId" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PreferredName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberType" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FacebookHomeUrl" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MemberEmail" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MemberProfile" Relationship="BaseDataModel.FK_ProfileMembers_MembershipProfiles" FromRole="Member" ToRole="MemberProfile" />
+        </EntityType>
+        <Association Name="FK_ProfileMembers_MembershipProfiles">
+          <End Type="BaseDataModel.MemberProfile" Role="MemberProfile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseDataModel.Member" Role="Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberProfile">
+              <PropertyRef Name="MemberProfileId" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="MemberProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BaseDataModelStoreContainer" CdmEntityContainer="BaseEntities">
-          <EntitySetMapping Name="UserPreferences">
-            <EntityTypeMapping TypeName="BaseDataModel.UserPreference">
-              <MappingFragment StoreEntitySet="UserPreferences">
-                <ScalarProperty Name="UserPreferenceId" ColumnName="UserPreferenceId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PerfValue" ColumnName="PerfValue" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MovieGenres">
             <EntityTypeMapping TypeName="BaseDataModel.MovieGenre">
               <MappingFragment StoreEntitySet="MovieGenre">
@@ -167,6 +276,15 @@
           <EntitySetMapping Name="Movies1">
             <EntityTypeMapping TypeName="BaseDataModel.Movie">
               <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="imdbRating" ColumnName="imdbRating" />
+                <ScalarProperty Name="PosterImageUrl" ColumnName="PosterImageUrl" />
+                <ScalarProperty Name="Awards" ColumnName="Awards" />
+                <ScalarProperty Name="CountryofOrigin" ColumnName="CountryofOrigin" />
+                <ScalarProperty Name="SpokenLanguage" ColumnName="SpokenLanguage" />
+                <ScalarProperty Name="Actors" ColumnName="Actors" />
+                <ScalarProperty Name="WrittenBy" ColumnName="WrittenBy" />
+                <ScalarProperty Name="Runtime" ColumnName="Runtime" />
+                <ScalarProperty Name="ReleaseYear" ColumnName="ReleaseYear" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -179,6 +297,46 @@
                 <ScalarProperty Name="MovieTitle" ColumnName="MovieTitle" />
                 <ScalarProperty Name="Genre" ColumnName="Genre" />
                 <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberProfiles">
+            <EntityTypeMapping TypeName="BaseDataModel.MemberProfile">
+              <MappingFragment StoreEntitySet="MemberProfiles">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="ProfileLanguage" ColumnName="ProfileLanguage" />
+                <ScalarProperty Name="ProfileTimeZone" ColumnName="ProfileTimeZone" />
+                <ScalarProperty Name="ProfileDescription" ColumnName="ProfileDescription" />
+                <ScalarProperty Name="SecondaryEmail" ColumnName="SecondaryEmail" />
+                <ScalarProperty Name="PrimaryEmail" ColumnName="PrimaryEmail" />
+                <ScalarProperty Name="PublicUserName" ColumnName="PublicUserName" />
+                <ScalarProperty Name="LocalUserName" ColumnName="LocalUserName" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
+                <ScalarProperty Name="MemberProfileId" ColumnName="MemberProfileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="BaseDataModel.Member">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="MemberEmail" ColumnName="MemberEmail" />
+                <ScalarProperty Name="FacebookHomeUrl" ColumnName="FacebookHomeUrl" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="MemberType" ColumnName="MemberType" />
+                <ScalarProperty Name="PreferredName" ColumnName="PreferredName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MemberProfileId" ColumnName="MemberProfileId" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

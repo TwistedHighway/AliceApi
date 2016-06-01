@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AliceApi.Repository.Models;
 using AliceApi.Repository.Repositories;
+using AliceApi.Repository.Repositories.Membership;
 using AliceApi.Repository.Repositories.Movies;
 
 namespace AliceApi.Repository
@@ -25,14 +26,9 @@ namespace AliceApi.Repository
         private MovieGenreRepository _movieGenreRepository;
         private MovieMpaaRepository _movieMpaaRepository;
 
-        //private ProjectStatusChangeRepository _projectStatusChangeRepository;
-        //private ActivityLogRepository _activityLogRepository;
-        //private SampleLogRepository _sampleLogRepository;
-
-        //private CapacityTypeRepository _capacityTypeRepository;
-        //private CustomerRepository _customerRepository;
-        //private SalesAuditRepository _salesAuditRepository;
-        //private FileAttachmentRepository _fileAttachmentRepository;
+        private MemberProfileRepository _memberProfileRepository;
+        private MemberRepository _memberRepository;
+        
 
         /// <summary>
         ///  HOUSEKEEPING
@@ -83,6 +79,10 @@ namespace AliceApi.Repository
 
 
 
+
+        #region Movies
+
+
         public MovieRepository MovieRepository
         {
             get { return _movieRepository ?? (_movieRepository = new MovieRepository(_baseEntities, UserContext)); }
@@ -93,47 +93,30 @@ namespace AliceApi.Repository
             get { return _movieGenreRepository ?? (_movieGenreRepository = new MovieGenreRepository(_baseEntities, UserContext)); }
         }
 
-        
-            public MovieMpaaRepository MovieMpaaRepository
+        public MovieMpaaRepository MovieMpaaRepository
         {
             get { return _movieMpaaRepository ?? (_movieMpaaRepository = new MovieMpaaRepository(_baseEntities, UserContext)); }
         }
-        //public ProjectStatusChangeRepository ProjectStatusChangeRepository
-        //{
-        //    get { return _projectStatusChangeRepository ?? (_projectStatusChangeRepository = new ProjectStatusChangeRepository(_salesApp1Entities, UserContext)); }
-        //}
-
-        //public ActivityLogRepository ActivityLogRepository
-        //{
-        //    get { return _activityLogRepository ?? (_activityLogRepository = new ActivityLogRepository(_salesApp1Entities, UserContext)); }
-        //}
-
-        //public SampleLogRepository SampleLogRepository
-        //{
-        //    get { return _sampleLogRepository ?? (_sampleLogRepository = new SampleLogRepository(_salesApp1Entities, UserContext)); }
-        //}
 
 
-        //public CapacityTypeRepository CapacityTypeRepository
-        //{
-        //    get { return _capacityTypeRepository ?? (_capacityTypeRepository = new CapacityTypeRepository(_salesApp1Entities, UserContext)); }
-        //}
+    #endregion
+        
 
-        //public CustomerRepository CustomerRepository
-        //{
-        //    get { return _customerRepository ?? (_customerRepository = new CustomerRepository(_salesApp1Entities, UserContext)); }
-        //}
 
-        //public SalesAuditRepository SalesAuditRepository
-        //{
-        //    get { return _salesAuditRepository ?? (_salesAuditRepository = new SalesAuditRepository(_salesApp1Entities, UserContext)); }
-        //}
+        #region Membership
 
-        //public FileAttachmentRepository FileAttachmentRepository
-        //{
-        //    get { return _fileAttachmentRepository ?? (_fileAttachmentRepository = new FileAttachmentRepository(_salesApp1Entities, UserContext)); }
-        //}
+        public MemberProfileRepository MemberProfileRepository
+        {
+            get { return _memberProfileRepository ?? (_memberProfileRepository = new MemberProfileRepository(_baseEntities, UserContext)); }
+        }
 
+        public MemberRepository MemberRepository
+        {
+            get { return _memberRepository ?? (_memberRepository = new MemberRepository(_baseEntities, UserContext)); }
+        }
+
+#endregion
+        
 
         public void Save()
         {
@@ -163,9 +146,7 @@ namespace AliceApi.Repository
         }
 
         #endregion
-
-
-
+        
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)

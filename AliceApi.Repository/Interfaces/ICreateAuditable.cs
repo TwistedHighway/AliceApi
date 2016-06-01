@@ -8,8 +8,9 @@ namespace AliceApi.Repository.Interfaces
 {
     public interface ICreateAuditable
     {
-        System.DateTime DateCreated { get; set; }
-        System.Guid CreatedBy { get; set; }
+        //System.DateTime DateCreated { get; set; }
+        //System.Guid CreatedBy { get; set; }
         DateTime CreateDate { get; set; }
+        string CreatedBy { get; set; }
     }
 }

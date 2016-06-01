@@ -25,9 +25,10 @@ namespace AliceApi.Repository.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<UserPreference> UserPreferences { get; set; }
         public DbSet<MovieGenre> MovieGenres { get; set; }
         public DbSet<MovieMPAA> MovieMPAAs { get; set; }
         public DbSet<Movie> Movies1 { get; set; }
+        public DbSet<MemberProfile> MemberProfiles { get; set; }
+        public DbSet<Member> Members { get; set; }
     }
 }

@@ -476,6 +476,420 @@
       <Name>dbo</Name>
       <Name>PK_CommissionItems</Name>
     </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Applications</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Applications</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Personalization_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Applications</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Profile_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Applications</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Roles_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Applications</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_MembershipUsers</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_MembershipUsers</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Profiles</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Profile_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Profiles</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Roles</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Roles_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Roles</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Users</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Users</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Personalization_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Users</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Profile_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Users</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Roles_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Users</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_UsersInRoles</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Roles_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_UsersInRoles</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_WebPartState_Paths</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Personalization_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_WebPartState_Paths</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_WebPartState_Shared</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Personalization_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_WebPartState_Shared</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_WebPartState_User</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Select.Object</Name>
+      <Name>aspnet_Personalization_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>vw_aspnet_WebPartState_User</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_CheckSchemaVersion</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_CheckSchemaVersion</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Personalization_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_CheckSchemaVersion</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Personalization_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_CheckSchemaVersion</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Profile_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_CheckSchemaVersion</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Profile_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_CheckSchemaVersion</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Roles_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_CheckSchemaVersion</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Roles_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_CheckSchemaVersion</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_WebEvent_FullAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_CheckSchemaVersion</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_ChangePasswordQuestionAndAnswer</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_FullAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_ChangePasswordQuestionAndAnswer</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_CreateUser</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_FullAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_CreateUser</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_FindUsersByEmail</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_FindUsersByEmail</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_FindUsersByName</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_FindUsersByName</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetAllUsers</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetAllUsers</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetNumberOfUsersOnline</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetNumberOfUsersOnline</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetNumberOfUsersOnline</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetPassword</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetPassword</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetPasswordWithFormat</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetPasswordWithFormat</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByEmail</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByEmail</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByEmail</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByName</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByName</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByName</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_WebEvent_FullAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Roles_ReportingAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Roles_FullAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Roles_BasicAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Profile_ReportingAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Profile_FullAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Profile_BasicAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Personalization_FullAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Personalization_ReportingAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Personalization_BasicAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Membership_ReportingAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Membership_FullAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlSchema, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>aspnet_Membership_BasicAccess</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByUserId</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_BasicAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByUserId</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_ReportingAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByUserId</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_ResetPassword</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_FullAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_ResetPassword</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_SetPassword</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPermissionStatement, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Grant.Execute.Object</Name>
+      <Name>aspnet_Membership_FullAccess</Name>
+      <Name>dbo</Name>
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_SetPassword</Name>
+    </SelectedItem>
   </ExcludedSourceElements>
   <ExcludedTargetElements>
     <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlTable, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -521,6 +935,94 @@
     <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlPrimaryKeyConstraint, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Name>dbo</Name>
       <Name>PK_CommissionItems</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Applications</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_MembershipUsers</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Profiles</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Roles</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_Users</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_UsersInRoles</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_WebPartState_Paths</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_WebPartState_Shared</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlView, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>vw_aspnet_WebPartState_User</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_ChangePasswordQuestionAndAnswer</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_CreateUser</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_FindUsersByEmail</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_FindUsersByName</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetAllUsers</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetNumberOfUsersOnline</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetPassword</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetPasswordWithFormat</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByEmail</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByName</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_GetUserByUserId</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_ResetPassword</Name>
+    </SelectedItem>
+    <SelectedItem Type="Microsoft.Data.Tools.Schema.Sql.SchemaModel.SqlProcedure, Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>dbo</Name>
+      <Name>aspnet_Membership_SetPassword</Name>
     </SelectedItem>
   </ExcludedTargetElements>
 </SchemaComparison>

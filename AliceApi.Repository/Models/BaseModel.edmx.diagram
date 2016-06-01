@@ -5,11 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e22db697462744d69a3a172a217cfbdf" Name="Diagram1" ShowGrid="true">
-        <EntityTypeShape EntityType="BaseDataModel.UserPreference" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseDataModel.MovieGenre" Width="1.5" PointX="7.625" PointY="1" />
         <EntityTypeShape EntityType="BaseDataModel.MovieMPAA" Width="1.5" PointX="4.125" PointY="1" />
         <EntityTypeShape EntityType="BaseDataModel.Movie" Width="1.5" PointX="6" PointY="1" />
         <AssociationConnector Association="BaseDataModel.FK_Movies_MovieMPRG" />
+        <EntityTypeShape EntityType="BaseDataModel.MemberProfile" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="BaseDataModel.Member" Width="1.5" PointX="3" PointY="4.625" />
+        <AssociationConnector Association="BaseDataModel.FK_ProfileMembers_MembershipProfiles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

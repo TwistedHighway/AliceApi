@@ -123,9 +123,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\MemberType.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="Interfaces\IAuditable.cs" />
     <Compile Include="Interfaces\ICreateAuditable.cs" />
+    <Compile Include="Interfaces\IMemberProfileRepository.cs" />
+    <Compile Include="Interfaces\IMemberRepository.cs" />
     <Compile Include="Interfaces\IMovieRepository.cs" />
     <Compile Include="Interfaces\IsDeleted.cs" />
     <Compile Include="LoggedInUserContext.cs" />
@@ -133,6 +136,12 @@
       <DependentUpon>LoggingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EntityPartials.cs" />
+    <Compile Include="Models\Member.cs">
+      <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemberProfile.cs">
+      <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Movie.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
@@ -140,9 +149,6 @@
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MovieMPAA.cs">
-      <DependentUpon>BaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserPreference.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vw_aspnet_WebEvents_extended.cs">
@@ -203,6 +209,8 @@
     </Compile>
     <Compile Include="Repositories\Logging\NLogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Membership\MemberProfileRepository.cs" />
+    <Compile Include="Repositories\Membership\MemberRepository.cs" />
     <Compile Include="Repositories\Movies\MoviesRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ComputerBeacon.Facebook.Server</name>
+    </assembly>
+    <members>
+        <member name="T:ComputerBeacon.Facebook.Server.CanvasContext">
+            <summary>
+            A Facebook session in a Canvas app
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Server.CanvasContext.#ctor(System.Web.HttpContextBase,ComputerBeacon.Facebook.Server.LoginSettings)">
+            <summary>
+            Parse the given http context to extract session information
+            </summary>
+            <param name="httpContext">Http context of the current request</param>
+            <param name="loginSettings">login settings</param>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Server.CanvasContext.IframeRedirect(System.String)">
+            <summary>
+            Redirect the user's browser that holds this iframe
+            </summary>
+            <param name="url">url to redirect to</param>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Server.CanvasContext.AccessToken">
+            <summary>
+            Access Token
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Server.CanvasContext.UserId">
+            <summary>
+            UserId of the current user
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Server.AppConfig">
+            <summary>
+            Configuration of a Facebook App
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Server.AppConfig.AppId">
+            <summary>
+            Application Id
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Server.AppConfig.AppSecret">
+            <summary>
+            Application Secret
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Server.LoginSettings">
+            <summary>
+            Configuration for Facebook's authentication process
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Server.LoginSettings.AppId">
+            <summary>
+            Application Id
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Server.LoginSettings.AppSecret">
+            <summary>
+            Application Secret
+            </summary>
+        </member>
+        <member name="F:ComputerBeacon.Facebook.Server.LoginSettings.Permissions">
+            <summary>
+            A list of permissions to ask the user to grant
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Server.LoginSettings.#ctor">
+            <summary>
+            Constructs a new instance using the info stored in the configuration file
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Server.LoginSettings.#ctor(System.String,System.String)">
+            <summary>
+            Constructs a new instance with the given app settings
+            </summary>
+            <param name="appId">Application Id</param>
+            <param name="appSecret">Application Secret</param>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Server.LoginSettings.GetLoginUrl(System.String)">
+            <summary>
+            Gets the Facebook url which will ask the user to authorize the app
+            </summary>
+            <param name="redirectUrl">Url to redirect the user to after the authorization dialog</param>
+            <returns>Url to redirect the user to</returns>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Server.PageTabContext">
+            <summary>
+            A Facebook session in a Page Tab app
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Server.PageTabContext.#ctor(System.Web.HttpContextBase,ComputerBeacon.Facebook.Server.LoginSettings)">
+            <summary>
+            Parse the given http context to extract session information
+            </summary>
+            <param name="httpContext">Http context of the current request</param>
+            <param name="loginSettings">Login settings</param>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Server.PageTabContext.PageId">
+            <summary>
+            The Page Id that currently holds the app
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Server.PageTabContext.IsPageAdmin">
+            <summary>
+            Whether the current user is an administrator of the current page
+            </summary>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Server.PageTabContext.HasLikedPage">
+            <summary>
+            Whether the current user has liked the page
+            </summary>
+        </member>
+        <member name="T:ComputerBeacon.Facebook.Server.WebContext">
+            <summary>
+            A Facebook session in a website
+            </summary>
+        </member>
+        <member name="M:ComputerBeacon.Facebook.Server.WebContext.#ctor(System.Web.HttpContextBase,ComputerBeacon.Facebook.Server.LoginSettings)">
+            <summary>
+            Parse the given http context to extract session information
+            </summary>
+            <param name="httpContext">Http context of the current request</param>
+            <param name="loginSettings">login settings</param>
+        </member>
+        <member name="P:ComputerBeacon.Facebook.Server.WebContext.AccessToken">
+            <summary>
+            Access Token
+            </summary>
+        </member>
+    </members>
+</doc>
