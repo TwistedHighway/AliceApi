@@ -3,6 +3,7 @@
 @model HelpPageApiModel
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     var description = Model.ApiDescription;
     ViewBag.Title = description.HttpMethod.Method + " " + description.RelativePath;
 }

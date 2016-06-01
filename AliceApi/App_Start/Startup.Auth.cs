@@ -7,22 +7,38 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using AliceApi.ViewModels;
+using AliceApi.Models;
+using AliceApi.Providers;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.MicrosoftAccount;
+using Microsoft.Owin.Security.OAuth;
 using Microsoft.Owin.Security.Twitter;
+//using WebMatrix.WebData;
 
 namespace AliceApi
 {
     public partial class Startup
     {
+        public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
+
+        public static string PublicClientId { get; private set; }
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+
+            // To let users of this site log in using their accounts from other sites such as Microsoft, Facebook, and Twitter,
+            // you must update this site. For more information visit http://go.microsoft.com/fwlink/?LinkID=252166
+            //WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+
+
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+
+
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -35,12 +51,25 @@ namespace AliceApi
                 {
                     // Enables the application to validate the security stamp when the user logs in.
                     // This is a security feature which is used when you change a password or add an external login to your account.  
-                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
-                        validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                    //OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
+                    //    validateInterval: TimeSpan.FromMinutes(30),
+                    //    regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            
+            // Configure the application for OAuth based flow
+            PublicClientId = "self";
+            OAuthOptions = new OAuthAuthorizationServerOptions
+            {
+                TokenEndpointPath = new PathString("/Token"),
+                Provider = new ApplicationOAuthProvider(PublicClientId),
+                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+                // In production mode set AllowInsecureHttp = false
+                AllowInsecureHttp = true
+            };
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
             app.UseTwoFactorSignInCookie(DefaultAuthenticationTypes.TwoFactorCookie, TimeSpan.FromMinutes(5));
@@ -52,15 +81,15 @@ namespace AliceApi
 
             // Uncomment the following lines to enable logging in with third party login providers
             app.UseMicrosoftAccountAuthentication(
-                clientId: "x",
-                clientSecret: "x-x-x");
+                clientId: "0000000048087436",
+                clientSecret: "bYgTctGcOUXPPWGbSS-V3-Lz9MQYOmw4");
             //https://account.live.com/developers/applications/index
             
 
             app.UseTwitterAuthentication(new TwitterAuthenticationOptions
             {
-                ConsumerKey = "x",
-                ConsumerSecret = "x",
+                ConsumerKey = "cOprXij5qbJzVYWrN9fiWwBnh",
+                ConsumerSecret = "6Co9A3IwRD4VI87qz7jzQkmAXBbpNZYajE0RnET5p8qucVWhiE",
                 //BackchannelCertificateValidator = null
                 BackchannelCertificateValidator = new Microsoft.Owin.Security.CertificateSubjectKeyIdentifierValidator(new[]
                     {
@@ -81,18 +110,18 @@ namespace AliceApi
             // Access token secret: Cc8LT13svFYgXb830uUcGhH0TfjAOKj5oYqeBPNj2rmXo
 
             
-            //app.MapSignalR();
+            app.MapSignalR();
 
             //app.UseWebApi()
 
             app.UseFacebookAuthentication(
-               appId: "x",
-               appSecret: "x");
+               appId: "1147876445241589",
+               appSecret: "616ba90a6b74798f33b74ea1904451ed");
             
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "x-x.apps.googleusercontent.com",
-                ClientSecret = "x-x"
+                ClientId = "650993449785-8f3jtqmjeigs91vlpkmdn6io0db338n2.apps.googleusercontent.com",
+                ClientSecret = "9paKxlvWAF4-6O491bNEBU54"
             });
 
 

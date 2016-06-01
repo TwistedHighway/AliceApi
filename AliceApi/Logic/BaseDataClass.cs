@@ -18,7 +18,7 @@ namespace AliceApi.Logic
                     MovieTitle = "Star Wars"
                 };
                 uow.MovieRepository.Insert(movie);
-                uow.Save();
+                //uow.Save();
                 var foo = uow.MovieRepository.Get();
             }
 

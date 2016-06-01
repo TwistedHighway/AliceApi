@@ -1,0 +1,31 @@
+﻿@model AliceApi.ViewModels.Movie.MovieViewModel.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+    <legend>Movie</legend>
+
+    <div class="control-group form-group">
+        <label>Title</label>
+        <div>@Model.MovieTitle</div>
+    </div>
+
+    <div class="display-label">ReleaseDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.ReleaseDate)</div>
+
+    <div class="display-label">Genre(s)</div>
+    <div class="display-field">@Model.GenreList</div>
+  
+
+    @*<div class="display-label">Rating</div>
+    <div class="display-field">@Model.Rating</div>*@
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MovieId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

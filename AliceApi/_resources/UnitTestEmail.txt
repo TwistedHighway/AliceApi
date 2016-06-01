@@ -1,0 +1,35 @@
+﻿http://www.codeaddiction.net/articles/23/introduction-to-unit-testing-in-c
+
+public class EmailSender : IEmailSender
+    {
+        private readonly IEmailProvider _emailProvider;
+        private readonly IEmailValidator _emailValidator;
+
+        public EmailSender(IEmailProvider emailProvider, IEmailValidator emailValidator)
+        {
+            _emailProvider = emailProvider;
+            _emailValidator = emailValidator;
+        }
+
+        public bool SendEmail(string receiverEmailAddress, string subject, string body)
+        {
+            if (string.IsNullOrEmpty(receiverEmailAddress))
+                throw new ArgumentException("You must specify an email address", 
+                    nameof(receiverEmailAddress));
+
+            if (!_emailValidator.IsEmailValid(receiverEmailAddress))
+                throw new ArgumentException("You must specify a valid email address", 
+                    nameof(receiverEmailAddress));
+
+            if (string.IsNullOrEmpty(subject))
+                throw new ArgumentException("You must specify a email subject", 
+                    nameof(subject));
+
+            if (string.IsNullOrEmpty(body))
+                throw new ArgumentException("You must specify a email body ", 
+                    nameof(body));
+
+            return _emailProvider.SendEmail(receiverEmailAddress, subject, body);
+
+        }
+    }

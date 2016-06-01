@@ -1,0 +1,23 @@
+﻿@model AliceApi.ViewModels.Account.SendCodeViewModel
+@{
+    ViewData["Title"] = "Send Verification Code";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h4>This verifies your existence as a human</h4>
+<hr/>
+@using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.RememberMe)
+    <div class="row">
+        <div class="col-md-8">
+            <label>Select Two-Factor Authentication Provider</label>
+            @Html.DropDownListFor(m => m.SelectedProvider, new SelectList(Model.Providers, "Value", "Text"), new {@class = "form-control"})<br/>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

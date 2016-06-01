@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connector.cs" />
+    <Compile Include="EnumExtensions.cs" />
     <Compile Include="ImageTools.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Reform.cs" />

@@ -8,3 +8,6 @@
 		"client_secret":"9paKxlvWAF4-6O491bNEBU54"
 	}
 }
+
+
+http://www.asp.net/web-pages/overview/getting-started/13-adding-social-networking-to-your-web-site

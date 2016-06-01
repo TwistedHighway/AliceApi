@@ -1,0 +1,80 @@
+﻿@using System.Web.UI.WebControls
+@using AliceApi.Controllers
+@using AliceApi.Helpers
+@model AliceApi.ViewModels.Movie.MovieViewModel.Movie
+
+@{
+    ViewBag.Title = Model.MovieId == 0 ? "New Movie" : "Edit Movie";
+    //ViewBag.Title = "Insert/Edit Movie";
+}
+<script type="text/javascript">
+            $(function () {
+                $(".date-picker").datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: "mm/dd/yy"
+                });
+
+                //$(".date-picker").on("change", function () {
+                //    var id = $(this).attr("id");
+                //    var val = $("label[for='" + id + "']").text();
+                //    $("#msg").text(val + " changed");
+                //});
+            });
+</script>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "Movie", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form" }))
+            {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Movie</legend>
+
+        @Html.HiddenFor(model => model.MovieId)
+
+        <div class="form-group">
+            <label>Movie Title</label>
+            @Html.TextBoxFor(m => m.MovieTitle, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MovieTitle, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label>Release Date</label>
+            <div class="input-group">
+                <label for="date-picker-3" class="input-group-addon btn">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </label>
+                @Html.TextBoxFor(m => m.ReleaseDate, "{0:MM/dd/yyyy}", new {@id="date-picker-3", @class = "date-picker form-control", @placeholder = "Enter release date..." })
+            </div>
+      
+            @*@Html.ValidationMessageFor(m => m.MovieTitle, "", new { @class = "text-danger" })*@
+           
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Genre)
+            <ul class="list-unstyled">
+                @foreach (var item in Model.Genres)
+                {
+                    <li><input type="checkbox" name="Genres" value="@item.GenreId" /> @item.GenreName</li>
+                }
+            </ul>
+            @*@Html.DropDownListFor(m => m.Genre, new SelectList(Model.Genres, "GenreId", "GenreName"), "select One", new {@class= "form-control dropdown" })*@
+        </div>
+
+       
+
+        <div class="form-actions">
+            <input type="submit" class="btn btn-default" value="Save" /> | @Html.ActionLink("cancel", "Index")
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

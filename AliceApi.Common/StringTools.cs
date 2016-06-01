@@ -8,7 +8,21 @@ namespace Common
 {
     public class StringTools
     {
+        /// <summary>
+        /// Helper function for format text into proper spacing and case 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string SeperateCamelCase(string value)
+        {
+            string fixit = string.Empty;
+            fixit = Regex.Replace(value, "((?<=[a-z])[A-Z]|[A-Z](?=[a-z]))", " $1");// magic!
 
+            // at least one exception... 
+            fixit = fixit.Replace("And", "and");
+
+            return fixit;
+        }
 
         // The secret salt...
         // had trouble moving this to the Web.config due to the characters in the string... 

@@ -15,6 +15,7 @@ namespace AliceApi
             // Active Directory
             //http://stackoverflow.com/questions/4342271/asp-net-mvc-forms-authorization-with-active-directory-groups
 
+            // Repository pattern and Unit of work
             //http://www.codeproject.com/Articles/990492/RESTful-Day-sharp-Enterprise-Level-Application
 
             // To let users of this site log in using their accounts from other sites such as Microsoft, Facebook, and Twitter,

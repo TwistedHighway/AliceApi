@@ -5,34 +5,89 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using AliceApi.Logic;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using AliceApi.ViewModels;
+using AliceApi.Models;
 
 namespace AliceApi
 {
+
+
+    /// <summary>
+    /// Mail service for two factor auth
+    /// </summary>
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            new Postal().SendMail(message);
+            //return Task.FromResult(0);
+            return configSendGridasync(message);
         }
+
+
+        private Task configSendGridasync(IdentityMessage message)
+        {
+            //var myMessage = new SendGridMessage();
+            //myMessage.AddTo(message.Destination);
+            //myMessage.From = new System.Net.Mail.MailAddress(
+            //                    "Joe@contoso.com", "Joe S.");
+            //myMessage.Subject = message.Subject;
+            //myMessage.Text = message.Body;
+            //myMessage.Html = message.Body;
+
+            //var credentials = new NetworkCredential(
+            //           ConfigurationManager.AppSettings["mailAccount"],
+            //           ConfigurationManager.AppSettings["mailPassword"]
+            //           );
+
+            //// Create a Web transport for sending email.
+            //var transportWeb = new Web(credentials);
+
+            // Send the email.
+            //if (transportWeb != null)
+            //{
+            //    return transportWeb.DeliverAsync(myMessage);
+            //}
+            //else
+            //{
+                return Task.FromResult(0);
+            //}
+        }
+
+
     }
 
+    /// <summary>
+    /// SMS Service for two factor auth
+    /// </summary>
     public class SmsService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your SMS service here to send a text message.
+            var soapSms = new ASPSMSX2.ASPSMSX2SoapClient("ASPSMSX2Soap");
+            soapSms.SendSimpleTextSMS(
+                System.Configuration.ConfigurationManager.AppSettings["ASPSMSUSERKEY"],
+                System.Configuration.ConfigurationManager.AppSettings["ASPSMSPASSWORD"],
+                message.Destination,
+                System.Configuration.ConfigurationManager.AppSettings["ASPSMSORIGINATOR"],
+                message.Body);
+            soapSms.Close();
             return Task.FromResult(0);
         }
     }
 
-    // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
+
+
+    /// <summary>
+    /// Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
+    /// </summary>
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
@@ -40,6 +95,12 @@ namespace AliceApi
         {
         }
 
+        /// <summary>
+        /// Creates a user instance.  Modify this to have all the data needed for a logged in user!
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
@@ -88,7 +149,10 @@ namespace AliceApi
         }
     }
 
-    // Configure the application sign-in manager which is used in this application.
+
+    /// <summary>
+    /// Configure the application sign-in manager which is used in this application.
+    /// </summary>
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
@@ -96,14 +160,37 @@ namespace AliceApi
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
-        {
-            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
-        }
+        //public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        //{
+        //    return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+        //}
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+
+        internal Task ExternalSignInAsync()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    /// <summary>
+    /// Configure the application role manager
+    /// </summary>
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> store) : base(store)
+        {
+        }
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            //var roleStore = new RoleStore<IdentityRole>(context.Get<AuthenticationDbContext>());
+         
+            var roleStore = new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>());
+            return new ApplicationRoleManager(roleStore);
         }
     }
 }

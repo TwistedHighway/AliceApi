@@ -14,11 +14,16 @@ body {
 }
 
 /* Set padding to keep content from hitting the edges */
+.container{ border: 0px solid red;}
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
     background-color: #fff;
+    border-left: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    border-bottom: 1px solid #c0c0c0
 }
+footer{ background-color: whitesmoke;}
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -33,8 +38,9 @@ textarea {
 .logInOut{ float: right;color: #fff;margin-top: -44px;font-size: 12px;}
 .logInOut a{ color: #fff;}
 
-
-.container{ border: 1px solid red;}
+.movieTable{ }
+.movieTable thead th{ padding: 5px;}
+.movieTable tbody td{ padding: 5px 3px;}
 
 
 .border0{ border: 1px solid #fff;}

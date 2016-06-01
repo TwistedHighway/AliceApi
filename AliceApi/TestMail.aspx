@@ -42,7 +42,7 @@
                     mySMTP.Credentials = basecredentials;
                     mySMTP.Credentials.GetCredential(txtMailServer.Text, Convert.ToInt16(txtPort.Text), "TLS");
                 }
-
+                mySMTP.DeliveryMethod = SmtpDeliveryMethod.Network;
                 mySMTP.Port = Convert.ToInt16(txtPort.Text);
                 mySMTP.EnableSsl = true;
                 mySMTP.Send(myMessage);

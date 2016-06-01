@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AliceApi.Logic.Movies;
@@ -19,8 +20,11 @@ namespace AliceApi.Controllers
         }
         //
         // GET: /Movie/
-        public virtual ActionResult Index()
+        public async Task<ViewResult> Index()
         {
+            var test = new InternetVideoArchive();
+            await test.FetchData();
+
             var model = new MovieViewModel.Movie();
             var logic = new Logic.Movies.MovieLogic();
             model.Movies = logic.GetAll();
@@ -31,7 +35,8 @@ namespace AliceApi.Controllers
         // GET: /Movie/Details/5
         public virtual ActionResult Details(int id)
         {
-            return View();
+            var model = _logic.GetOne(id);
+            return View(model);
         }
 
         //
@@ -39,7 +44,11 @@ namespace AliceApi.Controllers
         public virtual ActionResult Edit(int id)
         {
             if (id == 0)
-                return View(new MovieViewModel.Movie());
+                return View(new MovieViewModel.Movie()
+                {
+                    MovieId = 0,
+                    Genres = _logic.Genres
+                });
 
             var data = _logic.GetOne(id);
             return View(data);
@@ -48,42 +57,62 @@ namespace AliceApi.Controllers
         //
         // POST: /Movie/Edit/5
         [HttpPost]
-        public virtual ActionResult Edit(int id, FormCollection collection)
+        public virtual ActionResult Edit(int id, MovieViewModel.Movie model, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
-                //Alice1.Helpers.
+                var logic = new Logic.Movies.MovieLogic();
+                var movie = new MovieViewModel.Movie();
+
+                // Set up the Genre BitShift Field
+                var selectedGenres = Request.Form["Genres"];
+                var genreIdList = selectedGenres.Split(',');
+
+                if (genreIdList.Length == 0)
+                {model.Genres = null;}
+                else
+                {
+                    var genre = genreIdList.Sum(int.Parse);
+                    model.Genre = genre;
+                }
+
+                if (id == 0)
+                {
+                    // Insert
+                    model.MpaaRatingId = 1;
+                    movie = model;
+                    logic.Insert(movie);
+                }
+                else
+                {
+                    // Update
+                    var current = logic.GetOne(id);
+                    current.MovieTitle = model.MovieTitle;
+                    current.Genre = model.Genre;
+                    current.ReleaseDate = model.ReleaseDate;
+                    current.MpaaRatingId = 1;
+                    logic.Update(movie);
+                }
+                
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                model.ErrorId = 1;
+                model.Message = ex.Message;
+                return View(model);
             }
-        }
-
-        //
-        // GET: /Movie/Delete/5
-        public virtual ActionResult Delete(int id)
-        {
-            return View();
         }
 
         //
         // POST: /Movie/Delete/5
         [HttpPost]
-        public virtual ActionResult Delete(int id, FormCollection collection)
+        public JsonResult Delete(string id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            // put the result in a variable because we may want to do something with it. 
+            string result =_logic.Delete(int.Parse(id));
+            return Json(result, JsonRequestBehavior.AllowGet);
+           
         }
     }
 }

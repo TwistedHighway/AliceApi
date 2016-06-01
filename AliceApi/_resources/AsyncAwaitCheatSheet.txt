@@ -1,0 +1,130 @@
+﻿     Asynchronous programming is difficult. Fortunately, C# has all the wonders of the Task Parallel Library to help us out. 	 
+	 However, there is still a need to understand what properties we get with an async function definition, or what kind of properties we get when awaiting a task versus calling .Wait(). 	 
+	 Knowing the properties will leave us better prepared to make decisions around which method we wish to use. 
+	 So I made a little async await cheat sheet to help remember the properties of the different task scenarios. Enjoy~
+
+A pdf version to take along with you can be found here.
+
+o    Task Usage:
+
+•         Task<int> longTask = LongRunningCalculation()
+—  Task starts immediately.
+—  Runs to first await in LongRunningCalculation() on current thread.
+—  Returned Task<int> can be passed around to be awaited in the future.
+
+•         await longTask
+—  Does not block current thread.
+—  Unwraps Task<int> into int.
+—  Throws first exception that is triggered.
+
+•         longTask.Wait()
+—  Blocks current thread until longTask has completed.
+—  Throws AggregateException which needs to be unwrapped to find triggered exception.
+
+•         longTask.Wait(Timespan.FromSeconds(5))
+—  Blocks current thread until longTask has completed or the timeout has occurred.
+—  Throws AggregateException which needs to be unwrapped to find triggered exception.
+—  Returns true when longTask ran to completion, and false when longTask timed out.
+—  longTask may still be running even after the timeout.
+
+•         longTask.Result
+—  Blocks current thread until longTask has completed.
+—  Unwraps Task<int> into int.
+—  Throws AggregateException which needs to be unwrapped to find triggered exception.
+
+•         longTask.GetAwaiter().GetResult()
+—  Blocks current thread until longTask has completed.
+—  Unwraps Task<int> into int.
+—  Throws first exception that is triggered.
+
+o    Batch Task Usage:
+
+•         Task<int>[] longTasks =
+{ LongRunningCalculation(), LongRunningCalculation(), LongRunningCalculation() }
+—  All tasks start immediately.
+—  All tasks run to first await in each LongRunningCalculation() on current thread.
+
+•         Task.WhenAll(longTasks)
+—  Batches up all of longTasks into a single awaitable task.
+—  Runs all of longTasks in parallel when scheduling permits.
+—  Returned Task<int[]> can be passed around to be awaited in the future.
+
+•         await Task.WhenAll(longTasks)
+—  Does not block current thread.
+—  Unwraps Task<int[]> into int[].
+—  Finishes running all tasks before any exception is thrown.
+—  Throws first exception that is triggered.
+
+•         Task.WaitAll(longTasks)
+—  Blocks current thread until all longTasks have completed.
+—  Finishes running all tasks before any exception is thrown.
+—  Throws AggregateException which needs to be unwrapped to find triggered exception.
+
+•         Task.WaitAll(longTasks, Timespan.FromSeconds(5))
+—  Blocks current thread until all longTasks have completed or the timeout has occurred.
+—  Finishes running all tasks before exception is thrown.
+—  Throws AggregateException which needs to be unwrapped to find triggered exception.
+—  Returns true when longTasks all ran to completion, and false when longTasks timed out.
+—  longTasks may still be running even after the timeout.
+
+o    Configuring Task Await Options:
+
+•         await longTask.ConfigureAwait(false)
+—  Configures the task to not need to return to the synchronization context it was originally invoked with. The context is usually the thread it was invoked on.
+—  Lowers chance of deadlocks and should be preferred.
+
+•         await longTask.ConfigureAwait(true)
+—  Configures the task to need to return to the synchronization context it was originally invoked with. The context is usually the thread it was invoked on.
+—  This is the default for awaited tasks without calling .ConfigureAwait().
+—  Usually used when modifying UI elements that need to occur on the UI thread.
+
+o    Function Definitions:
+
+•         int Method()
+—  Method can internally contain Tasks.
+—  Method can internally .Wait() Tasks.
+—  Method cannot internally await Tasks.
+—  Method can return int.
+—  Method cannot be awaited on externally.
+—  Can externally catch exceptions thrown by Method.
+
+•         Task<int> Method()
+—  Method can internally contain Tasks.
+—  Method can internally .Wait() Tasks.
+—  Method cannot internally await Tasks.
+—  Method can return Task<int>.
+—  Method can be awaited on externally.
+—  Can externally catch exceptions thrown by Method when awaited.
+
+•         async Task<int> Method()
+—  Method can internally contain Tasks.
+—  Method can internally .Wait() Tasks.
+—  Method can internally await Tasks.
+—  Method can return int.
+—  Method can be awaited on externally.
+—  Can externally catch exceptions thrown by Method when awaited.
+
+•         Task Method()
+—  Method can internally contain Tasks.
+—  Method can internally .Wait() Tasks.
+—  Method cannot internally await Tasks.
+—  Method can return Task.
+—  Method can be awaited on externally.
+—  Can externally catch exceptions thrown by Method when awaited.
+
+•         async Task Method()
+—  Method can internally contain Tasks.
+—  Method can internally .Wait() Tasks.
+—  Method can internally await Tasks.
+—  Method cannot return anything.
+—  Method can be awaited on externally.
+—  Can externally catch exceptions thrown by Method when awaited.
+
+•         async void Method()
+—  Method can internally contain Tasks.
+—  Method can internally .Wait() Tasks.
+—  Method can internally await Tasks.
+—  Method cannot return anything.
+—  Method cannot be awaited on externally.
+—  Cannot externally catch exceptions thrown by Method.
+—  Usually used as an async event delegate function definition, any other situation should use async Task or async Task<T>.

@@ -1,17 +1,11 @@
-﻿@model AliceApi.ViewModels.ExternalLoginConfirmationViewModel
+﻿@model AliceApi.ViewModels.Account.ExternalLoginConfirmationViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewData["Title"] = "Register";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Associate your @ViewBag.ProviderDisplayName account.</h2>
-</hgroup>
-
 @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{ 
+{
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
 
     <h4>Association Form</h4>
     <hr />
@@ -28,6 +22,27 @@
             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
         </div>
     </div>
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.PublicViewName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PublicViewName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PublicViewName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control"})
+            @Html.ValidationMessageFor(m => m.FirstName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LastName)
+        </div>
+    </div>*@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />

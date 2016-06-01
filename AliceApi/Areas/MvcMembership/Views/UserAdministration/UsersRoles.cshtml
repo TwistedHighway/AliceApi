@@ -16,20 +16,48 @@
 
 <h3>Roles</h3>
 <div>
-	<ul>
-		@foreach(var role in Model.Rolls){
-		<li>
-			@Html.ActionLink(role.Value, "Role", new{id = role.Key})
-			@if(role.Key.Length > 0){
-                using(Html.BeginForm("RemoveFromRole", "UserAdministration", new{id = Model.User.Id, role = role.Key })){
-				<input type="submit" value="Remove From" />
-}
-            }else{
-                using(Html.BeginForm("AddToRole", "UserAdministration", new{id = Model.User.Id, role = role.Key })){
-				<input type="submit" value="Add To" />
-				}
-			}
-		</li>
-		}
-	</ul>
+    <ul>
+        @foreach (var role in Model.Rolls)
+        {
+            <li>
+                @Html.ActionLink(role.Value, "Role", new {id = role.Key})
+                @if (role.Key.Length > 0)
+                {
+                    using (Html.BeginForm("RemoveFromRole", "UserAdministration", new {id = Model.User.Id, role = role.Key}))
+                    {
+                        <input type="submit" value="Remove From"/>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm("AddToRole", "UserAdministration", new {id = Model.User.Id, role = role.Key}))
+                    {
+                        <input type="submit" value="Add To"/>
+                    }
+                }
+            </li>
+        }
+    </ul>
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <label>Available Roles</label>
+            <textarea rows="10" cols="20"></textarea>
+        </div>
+        <div class="col-md-2">
+            <br/><br/>
+            <input type="button" value="< remove" style="width: 100px;"/><br/>
+            <input type="button" value="add >" style="width: 100px;"/>
+        </div>
+        <div class="col-md-3">
+            <label>Roles Assigned</label>
+            <textarea rows="10" cols="20"></textarea>
+        </div>
+
+
+
+    </div>
+
+
 </div>

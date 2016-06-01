@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AliceApi.Logic.Membership;
+using AliceApi.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AliceApi.ViewModels.Manage;
+using AliceApi.ViewModels.Membership;
 using Microsoft.AspNet.Identity.EntityFramework;
 //using IndexViewModel = AliceApi.ViewModels.Manage.IndexViewModel;
 
@@ -16,10 +19,15 @@ namespace AliceApi.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        public const string PageTitle = "Account Manager";
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController(){}
+        public ManageController()
+        {
+            
+        }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
@@ -76,29 +84,27 @@ namespace AliceApi.Controllers
             var user = UserManager.FindById(User.Identity.GetUserId());
             
                 
-            var roll = new IdentityRole {Name = "Admin"};
-            if(!await RoleManager.RoleExistsAsync(roll.Name))
-                RoleManager.Create(roll);
+            //var roll = new IdentityRole {Name = "Admin"};
+            //if(!await RoleManager.RoleExistsAsync(roll.Name))
+            //    RoleManager.Create(roll);
 
-            roll = RoleManager.FindByName("Admin");
-            var iRole = new IdentityUserRole()
-            {
-                RoleId = roll.Id,
-                UserId = userId
-            };
+            //roll = RoleManager.FindByName("Admin");
+            //var iRole = new IdentityUserRole()
+            //{
+            //    RoleId = roll.Id,
+            //    UserId = userId
+            //};
 
-            if (!await UserManager.IsInRoleAsync(userId, roll.Name))
-            {
-                user.Roles.Add(iRole);
-                RoleManager.Update(roll);
-            }
-
-            var foo1 = UserManager.Users;
-            var foo3 = user.Claims;
-            var foo4 = user.Logins;
+            //if (!await UserManager.IsInRoleAsync(userId, roll.Name))
+            //{
+            //    user.Roles.Add(iRole);
+            //    RoleManager.Update(roll);
+            //}
 
             var userRoles = user.Roles.Select(userRole => RoleManager.FindById(userRole.RoleId)).ToList();
-            
+            var logic = new MembershipLogic(user);
+            var profileExists = logic.ProfileExists;
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
@@ -109,10 +115,14 @@ namespace AliceApi.Controllers
                 Roles = userRoles,
                 UserName = user.UserName,
                 Email = user.Email,
-                EmailConfirmed = user.EmailConfirmed
+                EmailConfirmed = user.EmailConfirmed,
+                // from here down we are extending into the profile area
+                ProfileExists = profileExists
             };
 
-
+            model.MemberProfile = profileExists ? logic.GetMemberProfileByUserId(user.Id) : new MemberViewModel.MemberProfile() {PublicUserName = user.UserName};
+        
+            ViewBag.PageTitle = PageTitle;
             return View(model);
         }
 
@@ -360,7 +370,7 @@ namespace AliceApi.Controllers
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -371,6 +381,63 @@ namespace AliceApi.Controllers
 
             base.Dispose(disposing);
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateProfile(IndexViewModel model)
+        {
+            // TODO: move this to an AJAX Call and leverage the response message in the UI
+
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var profile = new MemberViewModel.MemberProfile
+            {
+                AspNetUserId = user.Id,
+                LocalUserName = user.UserName,
+                PrimaryEmail = user.Email
+            };
+            
+            var memberLogic = new MembershipLogic(user).CreateProfile(profile);
+
+            return RedirectToAction("Index", "Manage");
+        }
+
+        public ActionResult _ProfileViewPartial(IndexViewModel model)
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var logic = new MembershipLogic(user);
+            if (logic.ProfileExists)
+            {
+               model.MemberProfile = logic.GetMemberProfileByUserId(user.Id);
+            }
+            return PartialView("_ProfileViewPartial", model);
+        }
+
+        [HttpGet]
+        public ActionResult EditProfile()
+        {
+            ViewBag.PageTitle = PageTitle;
+
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var logic = new MembershipLogic(user);
+            var model = logic.GetMemberProfileByUserId(user.Id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProfile(MemberViewModel.MemberProfile model)
+        {
+            ViewBag.PageTitle = PageTitle;
+
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var logic = new MembershipLogic(user);
+
+            logic.UpdatePrimaryMemberProfile(model);
+            return View(model);
+        }
+
+
 
         #region Helpers
         // Used for XSRF protection when adding external logins
@@ -424,5 +491,11 @@ namespace AliceApi.Controllers
         }
 
         #endregion
+
+
+
+
+
     }
+    
 }

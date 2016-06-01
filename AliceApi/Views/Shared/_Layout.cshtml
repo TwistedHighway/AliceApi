@@ -4,49 +4,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
-
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/css")
 </head>
-    <body>
-        <div id="site-wrapper">
-    <header>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title"><a href="~/">Alice ~ Api</a></p>
-            </div>
-            <div class="float-right">
-                 <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                <nav>
-                    <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                        <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                        <li>@Html.ActionLink("Logging", "Index", "Logging", new { area = "" }, null)</li>
-                        <li>@Html.ActionLink("Products", "Index", "Products", new { area = "" }, null)</li>
-                        <li>@Html.ActionLink("MvcMembership", "Index", "UserAdministration", new { area = "" }, null)</li>
-                        <li>@Html.ActionLink("Movies", "Index", "Movie", new { area = "" }, null)</li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-        
-            <div class="content-wrapper clear-fix">
-                @RenderSection("featured", required: false)
-                @RenderBody()
-            </div>
+<body>
 
-        @* NEEDED FOR STICKY FOOTER*@
-        <div class="push"></div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Alice.Api", "Index", "Home", new {area = ""}, new {@class = "navbar-brand pull-left"})        
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home", new {area = ""}, null)</li>
+                <li>@Html.ActionLink("API", "Index", "Help", new {area = ""}, null)</li>
+                @*<li>@Html.ActionLink("Products", "Index", "Products", new {area = ""}, null)</li>*@
+                <li>@Html.ActionLink("Movies", "Index", "Movie", new {area = ""}, null)</li>
+                <li>@Html.ActionLink("Contact Us", "Contact", "Home", new {area = ""}, null)</li>
+                <li>@Html.ActionLink("Admin", "Index", "UserAdministration", new { area = "" }, null)</li>
+            </ul>
+        </div>
+        @Html.Partial("_LoginPartial")
+       
     </div>
-    @*NEEDS TO BE OUTSIDE site-wrapper*@
+</div>
+
+<div class="container body-content">
+    @RenderSection("featured", required: false)
+    @RenderBody()
+    <hr/>
     <footer>
-        <div class="float-left">&copy;@Html.Raw(DateTime.Now.Year)</div>      
+        <p>&copy; @DateTime.Now.Year - AliceApi</p>
+        <ul class="list-inline">
+            <li>@Html.ActionLink("Logging", "Index", "Logging", new {area = ""}, null)</li>
+            <li>@Html.ActionLink("ThemeView", "ThemeView", "Home", new {area = ""}, null)</li>
+        </ul>
     </footer>
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+</div>
+
+
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </body>
 </html>

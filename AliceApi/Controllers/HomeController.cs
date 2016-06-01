@@ -11,7 +11,7 @@ using AliceApi.Services.Logging.NLog;
 
 namespace AliceApi.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // Logging Utilities
         protected NLogLogger nlog = new NLogLogger();

@@ -1,0 +1,26 @@
+﻿@model AliceApi.ViewModels.Manage.IndexViewModel
+
+
+<div class="form-group">
+    <label>User Name:</label>
+    @Html.Raw(Model.UserName)
+</div>
+<div class="form-group">
+    <label>Local User Name:</label>
+    @Html.Raw(Model.MemberProfile.LocalUserName)
+</div>
+<div class="form-group">
+    <label>Public Handle:</label>
+    @Html.Raw(Model.MemberProfile.PublicUserName)
+</div>
+<div class="form-group">
+    <label>Primary Email:</label>
+    @Html.Raw(Model.MemberProfile.PrimaryEmail)
+</div>
+<div class="form-group">
+    <label>Last Updated:</label>
+    @Html.Raw(Model.MemberProfile.DateUpdated)
+</div>
+<div class="form-actions">
+    @Html.ActionLink("Edit", "EditProfile", "Manage",  null, new {@class="btn btn-default"})
+</div>

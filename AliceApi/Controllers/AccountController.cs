@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.Logging;
@@ -9,6 +10,8 @@ using Microsoft.Owin.Security;
 using AliceApi.Models;
 using AliceApi.Services;
 using AliceApi.ViewModels.Account;
+using DotNetOpenAuth.AspNet.Clients;
+
 //using AliceApi.Services.Logging.Log4Net;
 //using Microsoft.Owin.Logging;
 namespace AliceApi.Controllers
@@ -65,8 +68,12 @@ namespace AliceApi.Controllers
                 _userManager = value;
             }
         }
-        
-        public AccountController(){}
+
+        public AccountController()
+        {
+             _emailSender = new AuthMessageSender();
+            
+        }
 
         public AccountController(
             ApplicationUserManager userManager,
@@ -158,11 +165,14 @@ namespace AliceApi.Controllers
                 {
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
-                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+                    await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                        "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: model.RememberBrowser);
+
                     Logger.LogInformation(3, "User created a new account with password.");
                     return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
@@ -315,7 +325,12 @@ namespace AliceApi.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email, Email = model.Email,
+                    //PublicViewName = model.PublicViewName, FirstName = model.FirstName, LastName = model.LastName,
+                    //Address1 = model.Address1
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -339,6 +354,11 @@ namespace AliceApi.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
+
+            userId = User.Identity.GetUserId();
+            //var user = UserManager.FindById(User.Identity.GetUserId());
+
+
             if (userId == null || code == null)
             {
                 return View("Error");
@@ -379,11 +399,11 @@ namespace AliceApi.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                 // Send an email with this link
-                //var code = await UserManager.GeneratePasswordResetTokenAsync(user);
-                //var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //   "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
-                //return View("ForgotPasswordConfirmation");
+                var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Url.Scheme);
+                await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                   "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+                return View("ForgotPasswordConfirmation");
             }
 
             // If we got this far, something failed, redisplay form
@@ -563,6 +583,37 @@ namespace AliceApi.Controllers
                 return View(model);
             }
         }
+
+
+
+        //public async Task<ActionResult> FacebookInfo()
+        //{
+        //    var claimsforUser = await UserManager.GetClaimsAsync(User.Identity.GetUserId());
+        //    var accessToken = claimsforUser.FirstOrDefault(x => x.Type == "FacebookAccessToken").Value;
+        //    var fb = new FacebookClient(accessToken, "secretcode");
+        //    dynamic myInfo = fb.Get("/me/friends");
+        //    var friendsList = new List<FacebookViewModel>();
+        //    foreach (dynamic friend in myInfo.data)
+        //    {
+        //        friendsList.Add(new FacebookViewModel()
+        //        {
+        //            Name = friend.Name,
+        //            ImageUrl = @"https://graph.facebook.com/" + friend.id + "/picture?type=large"
+        //        });
+        //    }
+        //    return View(friendsList);
+        //}
+
+        public void Facebooker()
+        {
+            var fb = new FacebookClient("", "");
+            
+            var fb1 = new FacebookGraphData();
+            
+        }
+
+
+
 
         #region Helpers
         // Used for XSRF protection when adding external logins
