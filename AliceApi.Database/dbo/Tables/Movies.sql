@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[Movies] (
+    [MovieId]         INT            IDENTITY (1, 1) NOT NULL,
+    [Genre]           INT            NULL,
+    [MovieTitle]      NVARCHAR (250) NULL,
+    [ReleaseDate]     DATETIME       NULL,
+    [DirectedBy]      NVARCHAR (150) NULL,
+    [Summary]         NVARCHAR (MAX) NULL,
+    [MPAAID]          INT            NOT NULL,
+    [LocalRating]     INT            NULL,
+    [DateCreated]     DATETIME       NULL,
+    [CreatedBy]       NVARCHAR (50)  NULL,
+    [DateUpdated]     DATETIME       NULL,
+    [UpdatedBy]       NVARCHAR (50)  NULL,
+    [ReleaseYear]     INT            NULL,
+    [Runtime]         NVARCHAR (150) NULL,
+    [WrittenBy]       NVARCHAR (150) NULL,
+    [Actors]          NVARCHAR (MAX) NULL,
+    [SpokenLanguage]  NVARCHAR (50)  NULL,
+    [CountryofOrigin] NVARCHAR (50)  NULL,
+    [Awards]          NVARCHAR (50)  NULL,
+    [PosterImageUrl]  NVARCHAR (MAX) NULL,
+    [imdbRating]      NVARCHAR (50)  NULL,
+    CONSTRAINT [PK_Movies] PRIMARY KEY CLUSTERED ([MovieId] ASC),
+    CONSTRAINT [FK_Movies_MovieMPRG] FOREIGN KEY ([MPAAID]) REFERENCES [dbo].[MovieMPAA] ([MPAAID]) ON UPDATE CASCADE
+);
+

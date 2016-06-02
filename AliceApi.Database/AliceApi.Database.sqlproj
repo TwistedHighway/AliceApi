@@ -68,4 +68,37 @@
   <ItemGroup>
     <None Include="Comparisons\JonDB-to-Project.scmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\TV_.sql" />
+    <Build Include="dbo\Tables\ToDoes.sql" />
+    <Build Include="dbo\Tables\Sheet3_.sql" />
+    <Build Include="dbo\Tables\NLog_Error.sql" />
+    <Build Include="dbo\Tables\MyUserInfoes.sql" />
+    <Build Include="dbo\Tables\Movies_.sql" />
+    <Build Include="dbo\Tables\Movies.sql" />
+    <Build Include="dbo\Tables\MovieMPAA.sql" />
+    <Build Include="dbo\Tables\MovieGenre.sql" />
+    <Build Include="dbo\Tables\Members.sql" />
+    <Build Include="dbo\Tables\MemberProfiles.sql" />
+    <Build Include="dbo\Tables\Log4Net_Error.sql" />
+    <Build Include="dbo\Tables\ELMAH_Error.sql" />
+    <Build Include="dbo\Tables\AuditLogs.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\aspnet_WebEvent_Events.sql" />
+    <Build Include="dbo\Tables\aspnet_WebEvent_ErrorCodes.sql" />
+    <Build Include="dbo\Tables\AppProfiles.sql" />
+    <Build Include="dbo\Tables\Applications.sql" />
+    <Build Include="dbo\Tables\AppConfig.sql" />
+    <Build Include="dbo\Tables\__MigrationHistory.sql" />
+    <Build Include="dbo\Stored Procedures\ELMAH_LogError.sql" />
+    <Build Include="dbo\Stored Procedures\ELMAH_GetErrorXml.sql" />
+    <Build Include="dbo\Stored Procedures\ELMAH_GetErrorsXml.sql" />
+    <Build Include="dbo\Stored Procedures\aspnet_WebEvent_LogEvent.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+  </ItemGroup>
 </Project>
