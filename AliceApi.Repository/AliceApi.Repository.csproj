@@ -113,8 +113,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebActivator, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebActivator.1.2.0.0\lib\NETFramework40\WebActivator.dll</HintPath>
+    <Reference Include="WebActivator, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.4.1\lib\net40\WebActivator.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
@@ -129,9 +129,13 @@
     <Compile Include="Interfaces\ICreateAuditable.cs" />
     <Compile Include="Interfaces\IMemberProfileRepository.cs" />
     <Compile Include="Interfaces\IMemberRepository.cs" />
+    <Compile Include="Interfaces\IAppConfigRepository.cs" />
     <Compile Include="Interfaces\IMovieRepository.cs" />
     <Compile Include="Interfaces\IsDeleted.cs" />
     <Compile Include="LoggedInUserContext.cs" />
+    <Compile Include="Models\AppConfig.cs">
+      <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AuditLog.cs">
       <DependentUpon>LoggingModel.tt</DependentUpon>
     </Compile>
@@ -154,6 +158,7 @@
     <Compile Include="Models\vw_aspnet_WebEvents_extended.cs">
       <DependentUpon>LoggingModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\AppConfig\AppConfigRepository.cs" />
     <Compile Include="Repositories\Logging\aspnet_WebEvent_ErrorCodes.cs" />
     <Compile Include="Repositories\Logging\ElmahRepository.cs" />
     <Compile Include="Repositories\Logging\HealthMonitoringRepository.cs" />

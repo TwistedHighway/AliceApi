@@ -11,16 +11,24 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.MemberProfileId)
-    
-    <h3>@Html.Raw(Model.LocalUserName)</h3>
 
-    <h4>Profile Data | <small>last update: @Html.Raw(Model.DateUpdated)</small> |</h4>
+    <h3>@Html.Raw(Model.PublicUserName)<br/>
+    <small>Last Update: @Html.Raw(Model.DateUpdated)</small></h3>
+
+
     <div class="form-group">
         @Html.LabelFor(m => m.PublicUserName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.PublicUserName, new {@class = "form-control"})
         </div>
    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LocalUserName, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LocalUserName, new {@class = "form-control"})
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.PrimaryEmail, new {@class = "col-md-2 control-label"})

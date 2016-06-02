@@ -1,19 +1,24 @@
-﻿.grid-options{ width: 960px; margin: 0 auto; }
-.grid-filter{ width: 960px; margin: 0 auto; border: 1px solid #000; }
+﻿.table{ border: 0px solid #000;font-size: 12px;}
+
+.grid-options{ }
+.grid-filter{  }
 .grid-filter .inner { }
-.grid-header { width: 960px; margin: 0 auto;  }
+.grid-header { }
 .grid-header .grid-results{ }
 .grid-header .grid-results .inner{}
+
 /*.grid-header .paging {border: 1px solid #000; }
 .grid-header .paging .pager {padding: 5px;}
 .grid-header .paging .pager .current { margin: 3px;background-color:#FEE085; border: 1px solid #C27F31;}
 .grid-header .paging .pager .disabled {color: #808080;}
 .grid-header .paging .pager a {padding: 2px; }*/
-.grid-container { width: 960px; margin: 0 auto; border: 1px solid #f00; }
-    .grid-container .grid { width: 100%; font-size: 12px; }
-        .grid-container .grid .alt{ background-color: #e8e8e8; }
+
+.grid-container { border: 0px solid #f00; }
+    .grid-container .grid {  }
+        .grid-container .grid .alt{  }
 
 #chartContainer{height: 450px; width: 960px; margin: auto; border: 1px solid #b6ff00;}
+
 #chartContainer #chart_div{ width: 760px; margin: auto; border: 1px solid #ffd800;}
 
 .nvidia { background: #76b900; color: #00e; }
@@ -29,10 +34,8 @@
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     */
-
 	margin:8px 3px;	
 	padding:3px;    
-    
 }
 
 .pager .disabled 

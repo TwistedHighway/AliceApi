@@ -32,7 +32,7 @@ namespace AliceApi.Logic
             //SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
             //System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("jonforst2000@gmail.com", "draco2199");
             SmtpClient smtpClient = new SmtpClient("mail.cableone.net", Convert.ToInt32(587));
-            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("jforst@cableone.net", "Admin$#1");
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("web", "config");
             smtpClient.Credentials = credentials;
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.EnableSsl = true;

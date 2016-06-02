@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -9,6 +10,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using AliceApi.Models;
 using AliceApi.Providers;
+using AliceApi.Repository;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.MicrosoftAccount;
 using Microsoft.Owin.Security.OAuth;
@@ -26,6 +28,14 @@ namespace AliceApi
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            // Api keys
+            var uow = new UnitOfWork();
+            var appConfig = uow.AppConfigRepository.Get().ToList();
+            var fb = appConfig.FirstOrDefault(w => w.ApiClient == "Facebook");
+            var ms = appConfig.FirstOrDefault(w => w.ApiClient == "Microsoft");
+            var go = appConfig.FirstOrDefault(w => w.ApiClient == "Google");
+            var tw = appConfig.FirstOrDefault(w => w.ApiClient == "Twitter");
+
 
             // To let users of this site log in using their accounts from other sites such as Microsoft, Facebook, and Twitter,
             // you must update this site. For more information visit http://go.microsoft.com/fwlink/?LinkID=252166
@@ -79,17 +89,18 @@ namespace AliceApi
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
+
             // Uncomment the following lines to enable logging in with third party login providers
             app.UseMicrosoftAccountAuthentication(
-                clientId: "0000000048087436",
-                clientSecret: "bYgTctGcOUXPPWGbSS-V3-Lz9MQYOmw4");
+                clientId: ms.ApiClientId, 
+                clientSecret: ms.ApiClientSecret);
             //https://account.live.com/developers/applications/index
             
 
             app.UseTwitterAuthentication(new TwitterAuthenticationOptions
             {
-                ConsumerKey = "cOprXij5qbJzVYWrN9fiWwBnh",
-                ConsumerSecret = "6Co9A3IwRD4VI87qz7jzQkmAXBbpNZYajE0RnET5p8qucVWhiE",
+                ConsumerKey = tw.ApiClientId, 
+                ConsumerSecret = tw.ApiClientSecret, 
                 //BackchannelCertificateValidator = null
                 BackchannelCertificateValidator = new Microsoft.Owin.Security.CertificateSubjectKeyIdentifierValidator(new[]
                     {
@@ -103,25 +114,25 @@ namespace AliceApi
                         "add53f6680fe66e383cbac3e60922e3b4c412bed" // Symantec Class 3 EV SSL CA - G3
                     })
             });
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "cOprXij5qbJzVYWrN9fiWwBnh",
-            //   consumerSecret: "6Co9A3IwRD4VI87qz7jzQkmAXBbpNZYajE0RnET5p8qucVWhiE");
-            // Access Token: 155943454-XcqLd8FTup2gQSjxQgF3YVqh7K8XkhrGJMhYRt13
-            // Access token secret: Cc8LT13svFYgXb830uUcGhH0TfjAOKj5oYqeBPNj2rmXo
 
+            //app.UseTwitterAuthentication(
+            //   consumerKey: "",
+            //   consumerSecret: "");
+            // Access Token: 
+            // Access token secret: 
             
             app.MapSignalR();
 
-            //app.UseWebApi()
+            //app.UseWebApi() //?
 
             app.UseFacebookAuthentication(
-               appId: "1147876445241589",
-               appSecret: "616ba90a6b74798f33b74ea1904451ed");
+                appId: fb.ApiClientId, 
+                appSecret: fb.ApiClientSecret); 
             
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "650993449785-8f3jtqmjeigs91vlpkmdn6io0db338n2.apps.googleusercontent.com",
-                ClientSecret = "9paKxlvWAF4-6O491bNEBU54"
+                ClientId = go.ApiClientId,
+                ClientSecret = go.ApiClientSecret
             });
 
 
@@ -166,36 +177,3 @@ namespace AliceApi
 
     }
 }
-
-
-//OAuthWebSecurity.RegisterMicrosoftClient(
-//    clientId: "0000000048087436",
-//    clientSecret: "mNWf6KsPMdG5UCA9nbZQzsIae11aS118");
-
-//OAuthWebSecurity.RegisterTwitterClient(
-//    consumerKey: "cOprXij5qbJzVYWrN9fiWwBnh",
-//    consumerSecret: "6Co9A3IwRD4VI87qz7jzQkmAXBbpNZYajE0RnET5p8qucVWhiE");
-
-//// Twitter Access Token:  155943454-XcqLd8FTup2gQSjxQgF3YVqh7K8XkhrGJMhYRt13
-//// Access Token Secret Cc8LT13svFYgXb830uUcGhH0TfjAOKj5oYqeBPNj2rmXo 
-//// Owner Member2199 
-//// Owner ID 155943454 
-
-//OAuthWebSecurity.RegisterFacebookClient(
-//    appId: "1147876445241589",
-//    appSecret: "616ba90a6b74798f33b74ea1904451ed");
-
-//OAuthWebSecurity.RegisterGoogleClient(); // google caused the whole upgrade but for good reason.  
-// Below could be used in an AJAX call. AnguayrJS or straight up jQ.  
-// Project Number: 650993449785
-// Client Id: 650993449785-8f3jtqmjeigs91vlpkmdn6io0db338n2.apps.googleusercontent.com
-// Project Id: aliceapi-1138
-//{"web":{
-//    "client_id":"650993449785-8f3jtqmjeigs91vlpkmdn6io0db338n2.apps.googleusercontent.com",
-//    "auth_uri":"https://accounts.google.com/o/oauth2/auth",
-//    "token_uri":"https://accounts.google.com/o/oauth2/token",
-//    "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
-//    "client_secret":"9paKxlvWAF4-6O491bNEBU54"
-
-//OAuthWebSecurity.RegisterLinkedInClient("key", "secret", "Name");
-//OAuthWebSecurity.RegisterYahooClient();

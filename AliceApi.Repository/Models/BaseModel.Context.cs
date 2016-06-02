@@ -30,5 +30,6 @@ namespace AliceApi.Repository.Models
         public DbSet<Movie> Movies1 { get; set; }
         public DbSet<MemberProfile> MemberProfiles { get; set; }
         public DbSet<Member> Members { get; set; }
+        public DbSet<AppConfig> AppConfigs { get; set; }
     }
 }

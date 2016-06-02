@@ -28,9 +28,10 @@ namespace AliceApi.ViewModels.Membership
               public Guid MemberProfileId { get; set; }          
             public string AspNetUserId { get; set; }// AspNetUserId
             
+            [Display(Name="Local User Name")]
             public string LocalUserName { get; set; }
 
-            [Display(Name="Public View User Name")]
+            [Display(Name="Public View Name")]
             public string PublicUserName { get; set; }
 
 

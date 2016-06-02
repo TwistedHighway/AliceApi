@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AliceApi.Repository.Models;
 using AliceApi.Repository.Repositories;
+using AliceApi.Repository.Repositories.AppConfig;
 using AliceApi.Repository.Repositories.Membership;
 using AliceApi.Repository.Repositories.Movies;
 
@@ -28,7 +29,8 @@ namespace AliceApi.Repository
 
         private MemberProfileRepository _memberProfileRepository;
         private MemberRepository _memberRepository;
-        
+
+        private AppConfigRepository _appConfigRepository;
 
         /// <summary>
         ///  HOUSEKEEPING
@@ -77,6 +79,13 @@ namespace AliceApi.Repository
             get { return _baseEntities; }
         }
 
+        /// <summary>
+        /// All application api key/value pairs go in this table. Might change the name at some point. 
+        /// </summary>
+        public AppConfigRepository AppConfigRepository
+        {
+            get { return _appConfigRepository ?? (_appConfigRepository = new AppConfigRepository(_baseEntities, UserContext)); }
+        }
 
 
 
@@ -114,8 +123,7 @@ namespace AliceApi.Repository
         {
             get { return _memberRepository ?? (_memberRepository = new MemberRepository(_baseEntities, UserContext)); }
         }
-
-#endregion
+        #endregion
         
 
         public void Save()

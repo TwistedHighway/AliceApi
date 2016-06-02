@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BaseDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppConfig">
+          <Key>
+            <PropertyRef Name="AppConfigId" />
+          </Key>
+          <Property Name="AppConfigId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplicationId" Type="uniqueidentifier" />
+          <Property Name="ApiClient" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApiClientId" Type="nvarchar(max)" />
+          <Property Name="ApiClientSecret" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="MemberProfiles">
           <Key>
             <PropertyRef Name="MemberProfileId" />
@@ -110,6 +120,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BaseDataModelStoreContainer">
+          <EntitySet Name="AppConfig" EntityType="Self.AppConfig" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MemberProfiles" EntityType="Self.MemberProfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MovieGenre" EntityType="Self.MovieGenre" Schema="dbo" store:Type="Tables" />
@@ -142,6 +153,7 @@
             <End Role="MemberProfile" EntitySet="MemberProfiles" />
             <End Role="Member" EntitySet="Members" />
           </AssociationSet>
+          <EntitySet Name="AppConfigs" EntityType="BaseDataModel.AppConfig" />
         </EntityContainer>
         <EntityType Name="MovieGenre">
           <Key>
@@ -251,6 +263,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AppConfig">
+          <Key>
+            <PropertyRef Name="AppConfigId" />
+          </Key>
+          <Property Name="AppConfigId" Type="Guid" Nullable="false" />
+          <Property Name="ApplicationId" Type="Guid" />
+          <Property Name="ApiClient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApiClientId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApiClientSecret" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -337,6 +359,17 @@
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MemberProfileId" ColumnName="MemberProfileId" />
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppConfigs">
+            <EntityTypeMapping TypeName="BaseDataModel.AppConfig">
+              <MappingFragment StoreEntitySet="AppConfig">
+                <ScalarProperty Name="ApiClientSecret" ColumnName="ApiClientSecret" />
+                <ScalarProperty Name="ApiClientId" ColumnName="ApiClientId" />
+                <ScalarProperty Name="ApiClient" ColumnName="ApiClient" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="AppConfigId" ColumnName="AppConfigId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

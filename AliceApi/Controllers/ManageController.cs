@@ -25,9 +25,7 @@ namespace AliceApi.Controllers
         private ApplicationUserManager _userManager;
 
         public ManageController()
-        {
-            
-        }
+        {}
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
@@ -437,7 +435,16 @@ namespace AliceApi.Controllers
             return View(model);
         }
 
-
+        public ActionResult _ProfileMembersPartial(MemberViewModel.MemberProfile model)
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            var logic = new MembershipLogic(user);
+            if (logic.ProfileExists)
+            {
+                //model.MemberProfile = logic.GetMemberProfileByUserId(user.Id);
+            }
+            return PartialView("_ProfileMembersPartial", model);
+        }
 
         #region Helpers
         // Used for XSRF protection when adding external logins

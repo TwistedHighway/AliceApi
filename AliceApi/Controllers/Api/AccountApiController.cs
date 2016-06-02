@@ -25,8 +25,7 @@ namespace AliceApi.Controllers.Api
         private ApplicationUserManager _userManager;
 
         public AccountApiController()
-        {
-        }
+        { }
 
         public AccountApiController(ApplicationUserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)

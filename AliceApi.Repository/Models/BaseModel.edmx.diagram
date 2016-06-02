@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="BaseDataModel.MemberProfile" Width="1.5" PointX="0.75" PointY="4" />
         <EntityTypeShape EntityType="BaseDataModel.Member" Width="1.5" PointX="3" PointY="4.625" />
         <AssociationConnector Association="BaseDataModel.FK_ProfileMembers_MembershipProfiles" />
+        <EntityTypeShape EntityType="BaseDataModel.AppConfig" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
